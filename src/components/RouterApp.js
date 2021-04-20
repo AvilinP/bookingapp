@@ -9,13 +9,11 @@ export default function RouterApp() {
     return (
         <>
             <Router>
-
                 <Menu />
 
-                <Route path="/" exact component={CardList} />
+                <Route path="/card" exact component={CardList} />
                 <Route path="/form" component={Form} />
-
-            </Router>
+            </Router> 
 
             
         </>

@@ -3,14 +3,17 @@ import Card from "./Card";
 
 // Array
 const arrOfProdObj = [
-    {productName: "Sneaker1", productPrice:1000} , 
-    {productName: "Sneaker2", productPrice:2000} , 
-    {productName: "Sneaker3", productPrice:3000} , 
+    {productName: "Manicure", productPrice:1000} , 
+    {productName: "Pedicure", productPrice:2000} , 
+    {productName: "Shellac", productPrice:3000} , 
+    {productName: "Manicure", productPrice:1000} , 
+    {productName: "Pedicure", productPrice:2000} , 
+    {productName: "Shellac", productPrice:3000} , 
 ]
 
 export default function CardList() {
     return (
-        <div>
+        <div class="flex flex-row justify-center">
 
             {arrOfProdObj.map((product) => {
                 return (
