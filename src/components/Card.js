@@ -4,7 +4,7 @@ import {Link} from "react-router-dom";
 function Card({productName, productPrice}) {
     return (
 
-                <div class="bg-gray-100 rounded-xl p-6 m-4">
+                <div class="bg-gray-200 rounded-xl p-6 m-4">
                 
                     <h2 class="">{productName}</h2>
                     

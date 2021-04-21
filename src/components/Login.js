@@ -1,41 +1,13 @@
-import React, { useState } from 'react';
+import React from 'react'
 
-
-const isAdmin = true;
-
-function Form() {
-
-
-  const initialValues = {
-    productName: " ",
-    productPrice: " "
-  }
-  const [formValues, setFormValues] = useState(initialValues)
-
-
-  function onHandleSubmit(e) {
-    e.preventDefault();
-
-  }
-
-
-  function onHandleChange(e) {
-    setFormValues({
-      ...formValues,
-      [e.target.name]: e.target.value
-    })
-  }
-
-
-  return (
-    <>
-     {isAdmin ?  
-      <div class="min-h-screen flex justify-center bg-gray-50 py-20 px-4 sm:px-6 lg:px-8">
+function Login() {
+    return (
+        <div class="min-h-screen flex justify-center bg-gray-50 py-20 px-4 sm:px-6 lg:px-8">
         <div class="max-w-md w-full space-y-8">
           <div>
             <img class="mx-auto h-12 w-auto" src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg" alt="Workflow"/>
             <h2 class="mt-6 text-center text-2xl font-extrabold text-gray-900">
-              Fill in your booking information
+            Sign in to your account
             </h2>
 
           </div>
@@ -81,11 +53,7 @@ function Form() {
           </form>
         </div>
       </div>
-
-      : 
-         (<div>Du har inte behörighet att se denna sida</div> )}  
-    </>
-  )
+    )
 }
 
-export default Form;
+export default Login;
