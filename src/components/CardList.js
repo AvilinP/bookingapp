@@ -11,7 +11,7 @@ const arrOfProdObj = [
 
 export default function CardList() {
     return (
-        <div class="flex flex-row flex-wrap justify-center">
+        <div className="flex flex-row flex-wrap justify-center">
 
             {arrOfProdObj.map((product) => {
                 return (

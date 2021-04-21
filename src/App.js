@@ -4,7 +4,7 @@ import RouterApp from "./components/RouterApp"
 
 function App() {
   return (
-    <div className="App">
+    <div>
 
       <RouterApp />
       

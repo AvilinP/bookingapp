@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
+import {Link} from "react-router-dom";
 
 
 const isAdmin = true;
@@ -7,8 +8,11 @@ function Form() {
 
 
   const initialValues = {
-    productName: " ",
-    productPrice: " "
+    firstName: " ",
+    lastName: " ",
+    address: " ",
+    telephone: " ",
+
   }
   const [formValues, setFormValues] = useState(initialValues)
 
@@ -30,25 +34,34 @@ function Form() {
 
 
   return (
-    <>
-      <div class="flex flex-row flex-wrap justify-center">
+    
+      <>
 
         {isAdmin ?
-          (<form onSubmit={onHandleSubmit} >
+          (<form className="mt-12 flex flex-col flex-wrap items-center justify-center" onSubmit={onHandleSubmit} >
             <label>First Name </label>
-            <input placeholder="Ange product name" className="border" value={formValues.productName} name="productName" onChange={onHandleChange} />
+            <input type="name" className="border" value={formValues.firstName} name="firstName" onChange={onHandleChange} />
 
             <label> Last Name </label>
-            <input placeholder="Ange price " type="number" name="Prices" value={formValues.productPrice} onChange={onHandleChange} />
+            <input type="name" className="border" value={formValues.lastName} name="lastName" onChange={onHandleChange} />
 
-            <button> Lägg till</button>
+            <label> Address </label>
+            <input type="name" className="border" value={formValues.address} name="address" onChange={onHandleChange} />
+
+
+            <label> Mobile Number </label>
+            <input type="name" className="border" value={formValues.telephone} name="telephone" onChange={onHandleChange} />
+
+            <Link to="/card">
+              <button class="text-indigo-500 px-6 mt-3 py-3 bg-gray-300 rounded hover:bg-indigo-500 hover:text-white transition duration-300">Confirm Booking</button>
+            </Link>
+
 
           </form>)
           :
-          (<div> Du har inte behörighet att se denna sida</div>)}
+          (<div> You're not an admin </div>)}
 
-      </div>
-    </>
+      </>
   )
 }
 
