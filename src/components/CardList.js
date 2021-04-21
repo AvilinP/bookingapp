@@ -7,13 +7,11 @@ const arrOfProdObj = [
     {productName: "Pedicure", productPrice:2000} , 
     {productName: "Shellac", productPrice:3000} , 
     {productName: "Manicure", productPrice:1000} , 
-    {productName: "Pedicure", productPrice:2000} , 
-    {productName: "Shellac", productPrice:3000} , 
 ]
 
 export default function CardList() {
     return (
-        <div class="flex flex-row justify-center">
+        <div class="flex flex-row flex-wrap justify-center">
 
             {arrOfProdObj.map((product) => {
                 return (

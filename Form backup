@@ -35,10 +35,10 @@ function Form() {
 
         {isAdmin ?
           (<form onSubmit={onHandleSubmit} >
-            <label>First Name </label>
+            <label>Productname </label>
             <input placeholder="Ange product name" className="border" value={formValues.productName} name="productName" onChange={onHandleChange} />
 
-            <label> Last Name </label>
+            <label> Productprice </label>
             <input placeholder="Ange price " type="number" name="Prices" value={formValues.productPrice} onChange={onHandleChange} />
 
             <button> Lägg till</button>
