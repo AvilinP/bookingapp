@@ -52,8 +52,8 @@ function Form() {
             <label> Mobile Number </label>
             <input type="name" className="border" value={formValues.telephone} name="telephone" onChange={onHandleChange} />
 
-            <Link to="/card">
-              <button class="text-indigo-500 px-6 mt-3 py-3 bg-gray-300 rounded hover:bg-indigo-500 hover:text-white transition duration-300">Confirm Booking</button>
+            <Link to="/mybookings">
+              <button className="text-indigo-500 px-6 mt-3 py-3 bg-gray-300 rounded hover:bg-indigo-500 hover:text-white transition duration-300">Confirm Booking</button>
             </Link>
 
 
