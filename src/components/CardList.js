@@ -3,10 +3,10 @@ import Card from "./Card";
 
 // Array
 const arrOfProdObj = [
-    {productName: "Manicure", productPrice:1000} , 
-    {productName: "Pedicure", productPrice:2000} , 
-    {productName: "Shellac", productPrice:3000} , 
-    {productName: "Manicure", productPrice:1000} , 
+    {productName: "Manicure", productDescription: "A basic manicure takes up to 30 minutes.", productPrice:"299 SEK"} , 
+    {productName: "Pedicure", productDescription: "A basic pedicure takes up to 45 minutes.", productPrice:"399 SEK"} , 
+    {productName: "Shellac", productDescription: "A shellac manicure takes up to 60 minutes.",productPrice:"499 SEK"} , 
+    {productName: "Manicure",productDescription: "A basic manicure takes up to 30 minutes.", productPrice:"299 SEK"} , 
 ]
 
 export default function CardList() {
@@ -15,7 +15,7 @@ export default function CardList() {
 
             {arrOfProdObj.map((product) => {
                 return (
-                    <Card productName={product.productName} price={product.productPrice} />
+                    <Card productName={product.productName} productDescription={product.productDescription} productPrice={product.productPrice} />
                 )
             })            
             }

@@ -25,8 +25,7 @@ function Form() {
 
 
   function onHandleChange(e) {
-    console.log("SINGLE NAME ", e.target.name);
-    console.log("VALUE", e.target.value);
+
     console.log("Form values ", formValues);
 
     setFormValues({ ...formValues, [e.target.name]: e.target.value })

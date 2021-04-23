@@ -1,18 +1,18 @@
 import React from "react";
 import {Link} from "react-router-dom";
 
-function Card({productName, productPrice}) {
+function Card({productName, productPrice, productDescription}) {
     return (
 
-                <div className="bg-gray-200 rounded-xl p-6 m-4">
+                <div className="bg-gray-200 rounded-xl p-6 m-4 w-60 flex flex-col items-center">
                 
-                    <h2 className="">{productName}</h2>
-                    
                     <div className="text-2xl font-bold mb-2"> 
-                        Hej!
+                    {productName}
                     </div>
+
+                    <h2 className="mb-4">{productDescription}</h2>
                     
-                    <div className="text-gray-800 leading-relaxed mb-6">
+                    <div className="text-gray-800 font-extrabold leading-relaxed mb-6">
                         {productPrice}
                     </div>
 
