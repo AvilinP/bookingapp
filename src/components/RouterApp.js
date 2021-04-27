@@ -4,6 +4,7 @@ import CardList from "./CardList";
 import Form from "./Form";
 import Login from "./Login";
 import MyBookings from "./MyBookings";
+import SearchList from "./SearchList";
 import {Route, BrowserRouter as Router} from "react-router-dom";
 
 
@@ -19,6 +20,7 @@ export default function RouterApp() {
                 <Route path="/form" component={Form} />
                 <Route path="/login" component={Login} />
                 <Route path="/mybookings" component={MyBookings} />
+                <Route path="/search" component={SearchList} />
                 
             </Router> 
 

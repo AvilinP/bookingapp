@@ -23,6 +23,8 @@ function Menu() {
 
                                 <Link to="/login" className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium absolute right-8">Login</Link>
 
+                                <Link to="/search" className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium absolute right-24">Inspiration</Link>
+
                             </div>
                         </div>
                 </div>
