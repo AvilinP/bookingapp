@@ -7,7 +7,7 @@
   
   .container {
     margin: 0 auto;
-    max-width: 1200px;
+    max-width: 1400px;
     padding: 40px; 
   }
   
@@ -51,7 +51,7 @@
   }
   
   .card-list {
-    column-count: 3;
+    column-count: 5;
   }
   
   .cardResult {
