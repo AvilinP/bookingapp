@@ -34,9 +34,9 @@ function Login() {
                 </div>
 
                 <div className="text-sm">
-                  <a href="#" className="font-medium text-indigo-600 hover:text-indigo-500">
+                  <p className="font-medium text-indigo-600 hover:text-indigo-500">
                     Forgot your password?
-                  </a>
+                  </p>
                 </div>
               </div>
 

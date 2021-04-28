@@ -10,14 +10,14 @@ const unsplash = new Unsplash({
 export default function SearchPhotos() {
 
     const [query, setQuery] = useState(""); // stores user input
-    const [pics, setPics] = useState([]);
+    const [pics, setPics] = useState([]); // stores pics from API
     console.log(pics)
 
     const searchPhotos = async (e) => {
         e.preventDefault();
 
         unsplash.search
-            .photos(query, 1, 50)
+            .photos(query, 1, 50) // sets the number of imgs shown
             .then(toJson)
             .then((json) => {
                 setPics(json.results);

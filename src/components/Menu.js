@@ -13,7 +13,7 @@ function Menu() {
                         <div className="sm:block sm:ml-6">
 
                             <div className="flex space-x-4">
-                                <Link to="/card"> <img className="mx-auto h-10 w-auto absolute flex left-8" src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg"/></Link>
+                                <Link to="/card"> <img className="mx-auto h-10 w-auto absolute flex left-8" src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg" alt="Logo"/></Link>
 
                                 <Link to="/login" className=" text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium" aria-current="page">About Us</Link>
 
