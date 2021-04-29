@@ -1,5 +1,6 @@
 import React from "react";
 import Menu from "./Menu";
+import Home from "./Home";
 import CardList from "./CardList";
 import Form from "./Form";
 import Login from "./Login";
@@ -16,6 +17,7 @@ export default function RouterApp() {
             <Router>
                 <Menu />
 
+                <Route path="/" exact component={Home} />
                 <Route path="/card" exact component={CardList} />
                 <Route path="/form" component={Form} />
                 <Route path="/login" component={Login} />
