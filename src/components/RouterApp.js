@@ -14,6 +14,7 @@ import {Route, BrowserRouter as Router} from "react-router-dom";
 export default function RouterApp() {
     return (
         <>
+            <div className="bg-gradient-to-r from-yellow-400 via-red-500 to-pink-500 h-screen">
             <Router>
                 <Menu />
 
@@ -26,7 +27,7 @@ export default function RouterApp() {
                 
             </Router> 
 
-            
+            </div>
         </>
     )
 }
