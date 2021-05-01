@@ -7,7 +7,7 @@ export default function CardList() {
     // useState for products
     const [products, setProducts] = useState([]);
 
-    // useEffect for fetching data from db
+    // useEffect for fetching data from db, feeds more data into jsx (ex in card > return)
     useEffect(() => {
 
         const fetchProducts = async()=> {
