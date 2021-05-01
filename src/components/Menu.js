@@ -10,7 +10,7 @@ function Menu() {
 
                 <Link to="/" className="menu-links absolute left-8">shop.</Link>
 
-                <Link to="/card" className="menu-links absolute left-16">news.</Link>
+                <Link to="/card" className="menu-links absolute left-16">new arrivals.</Link>
 
                 <Link to="/"> <img className="menu-logo" src="/assets/Dazed Studios.png" alt="Logo" /></Link>
 
