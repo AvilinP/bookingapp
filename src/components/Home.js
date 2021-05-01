@@ -9,7 +9,7 @@ function Home() {
 
                 <div className="border-2 border-black flex flex-col">
                     {/* <div className="flex justify-center p-2"> bag. </div> */}
-                    <img src="/assets/banana.jpeg" alt="Home page product 1" />
+                    <img src="/assets/strawberry.jpeg" alt="Home page product 1" />
                     {/* <button className="border-2 border-black m-2 p-2">See more</button> */}
 
                 </div>
@@ -31,7 +31,7 @@ function Home() {
 
                 <div className="border-2 border-black flex flex-col">
                     {/* <div className="flex justify-center p-2"> pineapple.</div> */}
-                    <img src="/assets/banana.jpeg" alt="Home page product 1" />
+                    <img src="/assets/strawberry.jpeg" alt="Home page product 1" />
                     {/* <button className="border-2 border-black m-2 p-2">See more</button> */}
                 </div>
 
@@ -46,10 +46,6 @@ function Home() {
                 <div className="border-2 border-black flex flex-col">
                     <img src="/assets/banana.jpeg" alt="Home page product 1" />
                 </div>
-
-
-
-
 
             </div>
         </>
