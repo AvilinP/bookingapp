@@ -12,6 +12,10 @@
         @apply mx-auto h-28 
     }
 
+    .btn {
+      @apply border-2 border-black m-2 p-2 hover:line-through
+    }
+
 }
 
 
