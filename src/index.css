@@ -5,7 +5,7 @@
 
 @layer components {
     .menu-links {
-        @apply text-gray-500 hover:bg-gray-700 hover:text-white rounded-md text-base font-medium py-1 px-2 invisible md:visible
+        @apply  text-white visited:text-white hover:line-through text-base font-medium py-1 px-2 invisible md:visible
     }
 
     .menu-logo {
@@ -13,6 +13,7 @@
     }
 
 }
+
 
 /* Photo Search */
 
