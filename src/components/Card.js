@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 function Card({ productName, productPrice, productDescription, productImage }) {
     return (
 
-        <div className=" border-2 border-black flex flex-col">
+        <div className="border-2 border-black flex flex-col">
 
 
             <img className="p-1" src={`http://localhost:1337${productImage.formats.small.url}`} alt="Services possible to book" />

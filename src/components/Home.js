@@ -5,7 +5,7 @@ function Home() {
     return (
         <>
 
-            <div className="min-h-screen ml-1 mr-1 pb-10 gap-1 grid grid-cols-1 grid-rows-1 xl:grid-cols-3 xl:grid-rows-2 xl:h-auto">
+            <div className="ml-1 mr-1 pb-10 gap-1 grid grid-cols-1 xl:grid-cols-3 xl:h-auto">
 
                 <div className="border-2 border-black flex flex-col">
                     {/* <div className="flex justify-center p-2"> bag. </div> */}

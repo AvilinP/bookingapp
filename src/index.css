@@ -13,7 +13,7 @@
     }
 
     .btn {
-      @apply border-2 border-black m-2 p-2 hover:line-through
+      @apply border-2 border-black m-2 p-2 hover:line-through hover:text-white hover:bg-black
     }
 
 }
