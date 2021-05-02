@@ -19,10 +19,10 @@ export default function RouterApp() {
                 <Menu />
 
                 <Route path="/" exact component={Home} />
-                <Route path="/card" exact component={CardList} />
+                <Route path="/arrivals" exact component={CardList} />
                 <Route path="/form" component={Form} />
                 <Route path="/login" component={Login} />
-                <Route path="/mybookings" component={MyBookings} />
+                <Route path="/cart" component={MyBookings} />
                 <Route path="/search" component={SearchList} />
                 
             </Router> 

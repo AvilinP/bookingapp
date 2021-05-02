@@ -7,7 +7,7 @@ function Card({ productName, productPrice, productDescription, productImage }) {
         <div className="border-2 border-black flex flex-col">
 
 
-            <img className="p-1" src={`http://localhost:1337${productImage.formats.small.url}`} alt="Services possible to book" />
+            <img className="p-1 h-screen object-cover" src={`http://localhost:1337${productImage.formats.small.url}`} alt="Services possible to book" />
 
             <div className="flex flex-col items-center pb-2">
 
@@ -22,7 +22,7 @@ function Card({ productName, productPrice, productDescription, productImage }) {
                 </div>
 
                 <Link to="/form">
-                    <button className="btn w-96">buy.</button>
+                    <button className="btn w-48 md:w-96">buy.</button>
                 </Link>
             </div>
 
