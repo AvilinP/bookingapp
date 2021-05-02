@@ -1,11 +1,14 @@
 import React from 'react';
+import Registration from "./Registration";
 
 // Add controlled elements in form
 
 
 function Login() {
     return (
-        <div className="min-h-screen flex justify-center bg-gray-50 py-20 px-4 sm:px-6 lg:px-8">
+      <>
+      <Registration />
+        {/* <div className="min-h-screen flex justify-center bg-gray-50 py-20 px-4 sm:px-6 lg:px-8">
           <div className="max-w-md w-full space-y-8">
             <div>
               <img className="mx-auto h-12 w-auto" src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg" alt="Workflow"/>
@@ -55,7 +58,8 @@ function Login() {
               </div>
             </form>
           </div> 
-      </div>
+      </div> */}
+      </>
     )
 }
 
