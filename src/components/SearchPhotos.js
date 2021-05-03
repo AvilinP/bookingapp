@@ -28,28 +28,25 @@ export default function SearchPhotos() {
 
     return (
         <>
-                    <form className="form" onSubmit={searchPhotos}>
-                        <label className="label" htmlFor="query">
-                            {" "}
-                            📷
-                        </label>
+                    <form className="flex flex-col justify-center w-full" onSubmit={searchPhotos}>
+
                         <input
                             type="text"
                             name="query"
-                            className="input"
-                            placeholder={`Try "nails" or "manicure"`}
+                            className="text-xl px-2 py-4 h-12 w-full my-4  bg-white"
+                            placeholder={` Try "shirt" or "skirt"`}
                             value={query}
                             onChange={(e) => setQuery(e.target.value)}
                         />
-                        <button type="submit" className="button">
+                        <button type="submit" className="btn m-0 mb-2">
                             Search
                         </button>
                     </form>
 
                     <div className="card-list">
-                        {pics.map((pic) => <div className="cardResult" key={pic.id}>
+                        {pics.map((pic) => <div className="mb-4 flex" key={pic.id}>
                             <img
-                                className="card--image"
+                                className="flex-1"
                                 alt={pic.alt_description}
                                 src={pic.urls.full}
                                 width="50%"
