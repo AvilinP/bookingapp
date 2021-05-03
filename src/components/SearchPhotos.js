@@ -33,7 +33,7 @@ export default function SearchPhotos() {
                         <input
                             type="text"
                             name="query"
-                            className="text-xl px-2 py-4 h-12 w-full my-4  bg-white"
+                            className="input-border text-xl px-2 py-4 h-12 w-full my-4"
                             placeholder={` Try "shirt" or "skirt"`}
                             value={query}
                             onChange={(e) => setQuery(e.target.value)}

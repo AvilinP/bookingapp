@@ -37,26 +37,29 @@ function Form() {
       <>
 
         {isAdmin ?
-          (<form className="mt-12 flex flex-col flex-wrap items-center justify-center" onSubmit={onHandleSubmit} >
+          (
+          <div className="min-h-screen">
+          <form className="mt-12 flex flex-col items-center" onSubmit={onHandleSubmit} >
             <label>First Name </label>
-            <input type="name" className="border" value={formValues.firstName} name="firstName" onChange={onHandleChange} />
+            <input type="name" className="input-border" value={formValues.firstName} name="firstName" onChange={onHandleChange} />
 
             <label> Last Name </label>
-            <input type="name" className="border" value={formValues.lastName} name="lastName" onChange={onHandleChange} />
+            <input type="name" className="input-border" value={formValues.lastName} name="lastName" onChange={onHandleChange} />
 
             <label> Address </label>
-            <input type="name" className="border" value={formValues.address} name="address" onChange={onHandleChange} />
+            <input type="name" className="input-border" value={formValues.address} name="address" onChange={onHandleChange} />
 
 
             <label> Mobile Number </label>
-            <input type="name" className="border" value={formValues.telephone} name="telephone" onChange={onHandleChange} />
+            <input type="name" className="input-border" value={formValues.telephone} name="telephone" onChange={onHandleChange} />
 
-            <Link to="/mybookings">
-              <button className="text-indigo-500 px-6 mt-3 py-3 bg-gray-300 rounded hover:bg-indigo-500 hover:text-white transition duration-300">Confirm Booking</button>
+            <Link to="/cart">
+              <button className="btn  mt-4">buy item(s).</button>
             </Link>
 
 
-          </form>)
+          </form>
+          </div>)
           :
           (<div> You're not an admin </div>)}
 

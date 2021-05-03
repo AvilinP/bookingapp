@@ -1,8 +1,4 @@
-/* ./src/index.css */
-
-
 /* Search - no column count in tailwind  */
- 
 .card-list {
   column-count: 5;
 }
@@ -29,6 +25,10 @@
 
     .btn {
       @apply border-2 border-black m-2 p-2 hover:line-through hover:text-white hover:bg-black
+    }
+
+    .input-border {
+        @apply border-2 border-black
     }
 
 }

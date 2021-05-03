@@ -89,7 +89,7 @@ function Registration() {
 
                         <div>
                             <button type="submit" className="btn w-full">
-                                Register
+                                register.
                             </button>
                         </div>
                     </form>
