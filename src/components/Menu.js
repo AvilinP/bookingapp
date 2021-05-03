@@ -16,9 +16,11 @@ function Menu() {
 
                 <Link to="/cart" className="menu-links absolute right-52">cart.</Link>
 
+                <Link to="/search" className="menu-links absolute right-24">inspiration.</Link>
+
                 <Link to="/login" className="menu-links absolute right-8">login.</Link>
 
-                <Link to="/search" className="menu-links absolute right-24">inspiration.</Link>
+
 
 
             </nav>

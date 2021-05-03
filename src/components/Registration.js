@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import axios from "axios";
+import Login from "./Login";
 
 
 
@@ -13,6 +14,10 @@ function Registration() {
 
     const [registerValues, setRegisterValues] = useState(initialValues)
 
+    // to show different divs depending on logged in state
+    // const [username, setUsername] = useState(""); // example with set username 
+    const [loggedIn, setLoggedIn] = useState(false)
+    const [error, setError] = useState("")
 
     function handleOnChange(e) {
         setRegisterValues({ ...registerValues, [e.target.name]: e.target.value })
@@ -22,65 +27,32 @@ function Registration() {
     function handleOnSubmit(e) {
         e.preventDefault();
 
-        const response = axios.post('http://localhost:1337/auth/local/register', {
+        axios.post('http://localhost:1337/auth/local/register', {
             username: registerValues.username,
             email: registerValues.email,
             password: registerValues.password,
-        })
-        console.log(response)
-
-     
+        }).then((e) => { if(e.data.user) setLoggedIn(true) })
+        .catch((err)=> {
+            setError(err.response.data.message[0].messages[0].message)})
     }
-
-    function msg() {
-           
-        if (registerValues.username === true) {
-            alert('Try again!')
-        } else {
-            alert('Successfully registered!')
-        }
-
-    }
-
-
-
-    // useEffect(() => {
-
-    //     const registerUser = async()=> {
-    //         const response = await axios.post('http://localhost:1337/auth/local/register', {
-    //         username: registerValues.username, //data från state
-    //         email: registerValues.email,
-    //         password: registerValues.password,
-    //         })
-    //         console.log(response)
-    //     }
-
-    //     registerUser(); 
-
-    //     const loginUser = async()=> {
-    //         const loginResponse =  await axios.post('http://localhost:1337/auth/local', {
-    //             identifier: 'user3@gmail.com',
-    //             password: 'Password1234',
-    //           })
-
-    //     }
-
-    //     loginUser();
-
-
-    // }, [])
-
-
 
 
     return (
-        <div>
-            <div className="min-h-screen flex justify-center py-20 px-4 sm:px-6 lg:px-8">
+        <>
+            {loggedIn ? (
+
+                (<div> <Login /> </div>)
+
+            ) : <div className="min-h-screen flex justify-center py-20 px-4 sm:px-6 lg:px-8">
                 <div className="max-w-md w-full space-y-8">
                     <div>
                         <h2 className="mt-6 text-center text-2xl">
-                            Register / Login
-              </h2>
+                            Register
+                    </h2>
+
+                    <div className="text-white text-2xl text-center pt-2">
+                        {error}
+                    </div>
 
                     </div>
                     <form className="mt-8 space-y-6" action="#" method="POST"
@@ -115,30 +87,16 @@ function Registration() {
                             </div>
                         </div>
 
-                        <div className="flex items-center justify-between">
-                            <div className="flex items-center">
-                                <input id="remember_me" name="remember_me" type="checkbox" className="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded" />
-                                <label htmlFor="remember_me" className="ml-2 block text-sm text-gray-900">
-                                    Remember me
-                  </label>
-                            </div>
-
-                            <div className="text-sm">
-                                <p>
-                                    Forgot your password?
-                  </p>
-                            </div>
-                        </div>
-
                         <div>
-                            <button type="submit" className="btn w-full" onClick={msg}>
+                            <button type="submit" className="btn w-full">
                                 Register
-                </button>
+                            </button>
                         </div>
                     </form>
                 </div>
             </div>
-        </div>
+            }
+        </>
     )
 }
 
