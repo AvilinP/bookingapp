@@ -7,7 +7,7 @@ function Card({ productName, productPrice, productDescription, productImage }) {
         <div className="border-2 border-black flex flex-col">
 
 
-            <img className="p-1 h-screen object-cover" src={`http://localhost:1337${productImage.formats.small.url}`} alt="Services possible to book" />
+            <img className="p-1 h-screen object-cover" src={`http://localhost:1337${productImage.formats.small.url}`} alt="Products possible to buy" />
 
             <div className="flex flex-col items-center pb-2">
 

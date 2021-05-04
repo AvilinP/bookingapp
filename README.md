@@ -1,3 +1,3 @@
-# Booking App
+# Dazed Studios E-commerce
 
-This is a booking app built in React.
+This school project is an e-commerce site built in React.

@@ -14,6 +14,9 @@ function Menu() {
 
                 <Link to="/"> <img className="menu-logo" src="/assets/Dazed Studios.png" alt="Logo" /></Link>
 
+               
+                <Link to="/createProducts" className="menu-links">createProducts.</Link>
+
                 <Link to="/cart" className="menu-links absolute right-60">cart.</Link>
 
                 <Link to="/search" className="menu-links absolute right-28">inspiration.</Link>

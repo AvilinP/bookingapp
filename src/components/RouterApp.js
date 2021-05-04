@@ -6,7 +6,8 @@ import Form from "./Form";
 import Login from "./Login";
 import MyBookings from "./MyBookings";
 import SearchList from "./SearchList";
-import Registration from "./Registration"
+import Registration from "./Registration";
+import CreateProducts from "./CreateProducts";
 import {Route, BrowserRouter as Router} from "react-router-dom";
 
 
@@ -19,13 +20,15 @@ export default function RouterApp() {
             <Router>
                 <Menu />
 
+                    {/* exact comp. is used when we need to avoid partial matching */}
                 <Route path="/" exact component={Home} />
-                <Route path="/arrivals" exact component={CardList} />
+                <Route path="/arrivals" component={CardList} />
                 <Route path="/form" component={Form} />
                 <Route path="/login" component={Login} />
                 <Route path="/cart" component={MyBookings} />
                 <Route path="/search" component={SearchList} />
                 <Route path="/registration" component={Registration} />
+                <Route path="/createProducts" component={CreateProducts} />
 
                 
             </Router> 

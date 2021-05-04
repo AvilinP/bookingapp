@@ -16,7 +16,7 @@
 
 @layer components {
     .menu-links {
-        @apply  text-white visited:text-white hover:line-through text-sm font-medium py-1 mx-4 px-2 invisible md:visible
+        @apply  text-black visited:text-black hover:line-through text-sm font-medium py-1 mx-4 px-2 invisible md:visible
     }
 
     .menu-logo {
