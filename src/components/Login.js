@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from "react-router-dom";
 import axios from "axios";
+import CreateProducts from "./CreateProducts";
 
 
 function Login() {
@@ -53,7 +54,16 @@ function Login() {
   return (
     <>
 
-    { auth ? <div> Välkommen {username} </div> : // username syns inte 
+    { auth ? 
+    
+    <> 
+     <div className="text-center"> Välkommen {username} </div>
+     <div> <CreateProducts /> </div>
+
+     
+      
+      
+    </> : 
 
       <div className="min-h-screen flex justify-center py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-md w-full space-y-8">

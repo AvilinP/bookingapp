@@ -1,54 +1,81 @@
-import React from "react";
+import React, { useState } from "react";
 import axios from "axios";
 
-export default class CreateProducts extends React.Component {
+function CreateProducts() {
 
-    state = {
-        file: null
+    const formInitialValues = {
+        name: "",
+        description: "",
+        price: 0,
     }
 
-    handleChange = (event) => {
-        console.log("CreateProducts.handleChange event.target.files", event.target.files)
+    const [formValues, setFormValues] = useState(formInitialValues)
 
-        this.setState({file:event.target.files[0]})
-
+    function handleOnChange(e) {
+        setFormValues({...formValues, [e.target.name] : e.target.value})
+        console.log(formValues.name, formValues.description, formValues.price)
     }
 
+    function handleOnSubmit(e) {
+        e.preventDefault();
 
-    handleSubmit = async (event) => {
-        event.preventDefault()
-        console.log("CreateProducts.handleSubmit this.state.file", this.state.file)
-
-        const data = new FormData()
-        data.append('files', this.state.file)
-
-        const  upload_res = await axios({
-            method: "POST",
-            url: "http://localhost:1337/upload",
-            data
+        axios.post("http://localhost:1337/products" , {
+            name: formValues.name,
+            description: formValues.description,
+            price: formValues.price,
+        }).then(  (res)=> {
+            console.log(res.data)
+   
+   
+        }).catch(  (err)=> {
+               console.log(err)
         })
-
-        console.log("CreateProducts.handleSubmit upload_res", upload_res)
-
     }
 
 
-    render() {
-
-        return (
+    return (
+        <>
             <div className="min-h-screen">
-                <form className="mt-12 flex flex-col items-center" onSubmit={this.handleSubmit} >
+                <form className="mt-12 flex flex-col items-center" onSubmit={handleOnSubmit} >
 
-                    <input onChange={this.handleChange} type="file" className="input-border"/>
+                    <input
+                    id="name" 
+                    type="text" 
+                    name="name"
+                    value={formValues.name}
+                    onChange={handleOnChange} 
+                    required
+                    placeholder="Name"
+                    /> 
+                    <input
+                    id="description" 
+                    type="text" 
+                    name="description"
+                    value={formValues.description}
+                    onChange={handleOnChange} 
+                    required
+                    placeholder="Description"
+                    /> 
+                    <input
+                    id="price" 
+                    type="number" 
+                    name="price"
+                    value={formValues.price}
+                    onChange={handleOnChange} 
+                    required
+                    placeholder="Price"
+                    /> 
+ 
+
                     <button className="btn mt-4">create product(s).</button>
 
                 </form>
             </div>
-        )
-
-    }
-
-
+        </>
+    )
 }
+
+export default CreateProducts
+
 
 
