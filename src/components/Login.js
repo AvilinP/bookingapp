@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import axios from "axios";
 import CreateProducts from "./CreateProducts";
 
@@ -15,6 +15,7 @@ function Login() {
   const [error, setError] = useState("")
   const [auth, setAuth] = useState("")
   const [username, setUsername] = useState("")
+  const history = useHistory();
 
 
   function handleOnChange(e) {
@@ -32,14 +33,11 @@ function Login() {
         password: formValues.password,
       })
       .then(response => {
-        // Handle success.
-        console.log("Well done!");
-        console.log("User profile", response.data.user);
         console.log("User token", response.data.jwt);
         console.log("userdata", response.data)
         setUsername(response.data.user.username)
-        console.log(response.data.user.username)
         setAuth(true);
+        history.push("/login/createProducts") // tar inte med username, men ändrar till rätt url.
       })
 
 
@@ -50,7 +48,7 @@ function Login() {
   }
 
 
-
+    
   return (
     <>
 
@@ -122,7 +120,7 @@ function Login() {
             </div>
 
             <div>
-              <button type="submit" className="btn w-full">
+              <button type="submit" className="btn w-full" >
                 sign in.
                 </button>
             </div>

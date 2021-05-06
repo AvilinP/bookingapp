@@ -29,8 +29,7 @@ export default function RouterApp() {
                 <Route path="/search" component={SearchList} />
                 <Route path="/registration" component={Registration} />
                 <Route path="/createProducts" component={CreateProducts} />
-
-                
+  
             </Router> 
 
             </div>

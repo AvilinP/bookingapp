@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 
+
 function CreateProducts() {
 
     const formInitialValues = {
@@ -10,6 +11,7 @@ function CreateProducts() {
     }
 
     const [formValues, setFormValues] = useState(formInitialValues)
+
 
     function handleOnChange(e) {
         setFormValues({...formValues, [e.target.name] : e.target.value})
@@ -23,8 +25,9 @@ function CreateProducts() {
             name: formValues.name,
             description: formValues.description,
             price: formValues.price,
-        }).then(  (res)=> {
-            console.log(res.data)
+        }).then(  (response)=> {
+            console.log(response.data)
+   
    
    
         }).catch(  (err)=> {
@@ -38,7 +41,7 @@ function CreateProducts() {
             <div className="min-h-screen">
                 <form className="mt-12 flex flex-col items-center" onSubmit={handleOnSubmit} >
 
-                    <input
+                    <input className="input-border mb-2"
                     id="name" 
                     type="text" 
                     name="name"
@@ -47,7 +50,7 @@ function CreateProducts() {
                     required
                     placeholder="Name"
                     /> 
-                    <input
+                    <input className="input-border mb-2"
                     id="description" 
                     type="text" 
                     name="description"
@@ -56,7 +59,7 @@ function CreateProducts() {
                     required
                     placeholder="Description"
                     /> 
-                    <input
+                    <input className="input-border mb-2"
                     id="price" 
                     type="number" 
                     name="price"
