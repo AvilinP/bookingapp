@@ -11,11 +11,16 @@ function CreateProducts() {
     }
 
     const [formValues, setFormValues] = useState(formInitialValues)
+    const [fileData, setFileData] = useState()
 
 
     function handleOnChange(e) {
         setFormValues({...formValues, [e.target.name] : e.target.value})
         console.log(formValues.name, formValues.description, formValues.price)
+    }
+
+    function handleOnChangeImg(e) {
+        setFileData(e.target.files[0])
     }
 
     function handleOnSubmit(e) {
@@ -27,6 +32,16 @@ function CreateProducts() {
             price: formValues.price,
         }).then(  (response)=> {
             console.log(response.data)
+
+            // img file upload
+            const data = new FormData();
+            data.append("files", fileData)
+            data.append("ref", "product") // append to collection
+            data.append("refId", response.data.id) // append to above product id  
+            data.append("field", "img") // append to field in collection
+            axios.post("http://localhost:1337/upload", data)
+            .then((image)=> console.log(image) )
+            .catch((err) => console.log(err))
    
    
    
@@ -68,6 +83,13 @@ function CreateProducts() {
                     required
                     placeholder="Price"
                     /> 
+
+                    <input
+                    id="file" 
+                    type="file"
+                    name="file"
+                    onChange={handleOnChangeImg}
+                    />
  
 
                     <button className="btn mt-4">create product(s).</button>
