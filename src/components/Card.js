@@ -1,7 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import Form from "./Form";
 
-function Card({ productName, productPrice, productDescription, productImage }) {
+
+function Card({ product, productName, productPrice, productDescription, productImage }) {
+
+    const [cart, setCart] = useState([]);
+
+    const addToCart = (product) => {
+        console.log("in cart");
+        setCart([...cart, product]);
+        console.log(productName)
+
+    }
+
     return (
 
         <div className="border-2 border-black flex flex-col">
@@ -22,10 +34,11 @@ function Card({ productName, productPrice, productDescription, productImage }) {
                 </div>
 
                 <Link to="/form">
-                    <button className="btn w-48 md:w-96">buy.</button>
+                    <button
+                        className="btn w-48 md:w-96"
+                        onClick={() => addToCart(product)}> buy.</button>
                 </Link>
             </div>
-
 
         </div>
 

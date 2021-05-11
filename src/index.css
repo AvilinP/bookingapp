@@ -31,6 +31,10 @@
         @apply border-2 border-black
     }
 
+    .border-home {
+        @apply border-2 border-black flex flex-col
+    }
+
 }
 
 

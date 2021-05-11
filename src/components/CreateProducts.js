@@ -84,11 +84,12 @@ function CreateProducts() {
                     placeholder="Price"
                     /> 
 
-                    <input
+                    <input className="input-border w-52 mt-4 mb-4"
                     id="file" 
                     type="file"
                     name="file"
                     onChange={handleOnChangeImg}
+                    required
                     />
  
 
