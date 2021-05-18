@@ -10,9 +10,6 @@ import Registration from "./Registration";
 import CreateProducts from "./CreateProducts";
 import {Route, BrowserRouter as Router} from "react-router-dom";
 
-
-
-
 export default function RouterApp() {
     return (
         <>

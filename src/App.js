@@ -1,4 +1,4 @@
-import './App.css';
+
 import RouterApp from "./components/RouterApp"
 
 
@@ -8,8 +8,6 @@ function App() {
 
       <RouterApp />
 
-
-      
     </div> 
   )
 }
