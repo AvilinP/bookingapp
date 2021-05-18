@@ -1,27 +1,26 @@
-import React from "react";
+import React, {useState} from "react";
+import Modal from "react-modal";
+import axios from "axios";
 import { useCart, useDispatchCart } from "./CartProvider"
 
 const CartItem = ({ product, index, handleRemove }) => {
     return (
         <div>
-            <article className="px-8">
-                <div className="dt w-100 bb b--black-10 pb2 mt2 dim blue" href="#0">
-                    <div className="dtc w3">
-                        <img src={`http://localhost:1337${product.img.formats.small.url}`} className="db w-100" />
+            <article className="px-8 pl-14">
+                <div>
+                    <div>
+                        <img src={`http://localhost:1337${product.img.formats.small.url}`} />
                     </div>
-                    <div className="dtc v-top pl2">
-                        <h1 className="f6 f5-ns fw6 lh-title black mv0">{product.name}</h1>
-                        <h2 className="f6 fw4 mt2 mb0 black-60">{product.description}</h2>
-                        <dl className="mt2 f6">
-                            <dt className="clip">Price</dt>
-                            <dd className="ml0">
-                                {product.price.toLocaleString("se", {
-                                    style: "currency",
-                                    currency: "SEK"
-                                })}
-                            </dd>
+                    <div className="flex flex-col py-4">
+                        <h1 className="py-2">{product.name}</h1>
+                        <h2 className="py-2">{product.description}</h2>
+                        <dl className="py-2">
+                            {product.price.toLocaleString("se", {
+                                style: "currency",
+                                currency: "SEK"
+                            })}
                         </dl>
-                        <button onClick={() => handleRemove(index)}>Remove from cart</button>
+                        <button className="btn w-full m-0" onClick={() => handleRemove(index)}>Remove from cart</button>
                     </div>
                 </div>
             </article>
@@ -30,6 +29,61 @@ const CartItem = ({ product, index, handleRemove }) => {
 };
 
 export default function Store() {
+
+    const customStyles = {
+        content: {
+            // height: '300px',
+            top: '50%',
+            left: '50%',
+            right: 'auto',
+            bottom: 'auto',
+            marginRight: '-50%',
+            transform: 'translate(-50%, -50%)'
+        }
+    };
+
+
+    const modalInitialValues = {
+        name: "",
+        address: "", 
+        mobile: ""
+    }
+
+    const [modalIsOpen, setIsOpen] = useState(false);
+    const [modalFormValues, setModalFormValues] = useState(modalInitialValues)
+
+
+    function openModal() {
+        setIsOpen(true)
+    }
+
+    function closeModal() {
+        setIsOpen(false)
+    }
+
+    function onHandleChange(e) {
+        setModalFormValues({ ...modalFormValues, [e.target.name]: e.target.value })
+    }
+
+    async function onHandleSubmit(e) {
+        e.preventDefault();
+
+        try {
+            const response = await axios.post("http://localhost:1337/user-carts", {
+            name: modalFormValues.name,
+            address: modalFormValues.address,
+            mobile:Number(modalFormValues.mobile)
+        }) 
+        console.log("added to userCart",response)
+        } 
+        catch(error) {
+            console.log(error.data)
+        }
+
+    }
+
+
+
     const items = useCart();
     const dispatch = useDispatchCart();
     const totalPrice = items.reduce((total, b) => total + b.price, 0);
@@ -46,14 +100,7 @@ export default function Store() {
         );
     }
     return (
-        <main className="min-h-screen flex">
-            <p className="px-8">
-                Total price:{" "}
-                {totalPrice.toLocaleString("se", {
-                    style: "currency",
-                    currency: "SEK"
-                })}
-            </p>
+        <main className="min-h-screen flex pt-14">
             {items.map((item, index) => (
                 <CartItem
                     handleRemove={handleRemove}
@@ -62,6 +109,64 @@ export default function Store() {
                     index={index}
                 />
             ))}
+
+            <p className="px-8 ml-4 flex flex-col">
+                Total price:{" "}
+                {totalPrice.toLocaleString("se", {
+                    style: "currency",
+                    currency: "SEK"
+                })}
+
+                {/* ADD MODAL HERE!     */}
+                <button 
+                className="btn mt-12 w-full"
+                onClick={openModal}> buy items.</button>
+            </p>
+
+            <Modal
+                    isOpen={modalIsOpen}
+                    onRequestClose={closeModal}
+                    style={customStyles}
+                    ariaHideApp={false}
+                    contentLabel="Add to cart Modal"
+                >
+
+                    <button onClick={closeModal}>(X)</button>
+                    <div> please fill in your info before adding to cart.</div>
+                    <form className="my-12" onSubmit={onHandleSubmit}>
+
+                        <input 
+                        className="input-border mx-1" 
+                        type="text" 
+                        name="name" 
+                        placeholder="your name" required
+                        value={modalFormValues.name} 
+                        onChange={onHandleChange} />
+
+                        <input 
+                        className="input-border mx-1" 
+                        type="text" 
+                        name="address" 
+                        placeholder="your address" required
+                        value={modalFormValues.address} 
+                        onChange={onHandleChange} />
+
+                        <input 
+                        className="input-border mx-1" 
+                        type="number" 
+                        name="mobile" 
+                        placeholder="your mobile number" required
+                        value={modalFormValues.mobile} 
+                        onChange={onHandleChange} />
+
+                        <button 
+                        className="btn" 
+                        type="submit">add to cart.
+                        </button>
+                    </form>
+                </Modal>
+
+
         </main>
     );
 }
