@@ -16,14 +16,14 @@ export default function ModalConfirm() {
     };
 
 
-    const initialValues = {
+    const modalInitialValues = {
         name: "",
         timeToAppointment: "",
         mobile: ""
     }
 
     const [modalIsOpen, setIsOpen] = useState(false);
-    const [formValues, setFormValues] = useState(initialValues)
+    const [modalFormValues, setModalFormValues] = useState(modalInitialValues)
 
 
     function openModal() {
@@ -31,7 +31,7 @@ export default function ModalConfirm() {
     }
 
     function onHandleChange(e) {
-        setFormValues({ ...formValues, [e.target.name]: e.target.value })
+        setModalFormValues({ ...modalFormValues, [e.target.name]: e.target.value })
     }
 
     function onHandleSubmit(e) {
@@ -45,7 +45,7 @@ export default function ModalConfirm() {
 
         return (
             <>
-                <button className="px-3 py-2 bg-gray-800 text-white text-xs font-bold uppercase rounded" onClick={openModal} >boka</button>
+                <button className="btn w-48 md:w-96" onClick={openModal} >modal.</button>
 
                 <Modal
                     isOpen={modalIsOpen}
@@ -54,13 +54,12 @@ export default function ModalConfirm() {
                     contentLabel="Example Modal"
                 >
 
-                    {/* <h2 ref={_subtitle => (subtitle = _subtitle)}>Hello</h2> */}
                     <button onClick={closeModal}>(X)</button>
-                    <div>I am a modal</div>
+                    <div>added to cart.</div>
                     <form onSubmit={onHandleSubmit}>
-                        <input type="text" name="name" value={formValues.name} onChange={onHandleChange} />
-                        <input type="text" name="timeToAppointment" value={formValues.timeToAppointment} onChange={onHandleChange} />
-                        <input type="number" name="mobile" value={formValues.mobile} onChange={onHandleChange} />
+                        <input type="text" name="name" value={modalFormValues.name} onChange={onHandleChange} />
+                        <input type="text" name="timeToAppointment" value={modalFormValues.timeToAppointment} onChange={onHandleChange} />
+                        <input type="number" name="mobile" value={modalFormValues.mobile} onChange={onHandleChange} />
                         <button type="submit">Send</button>
                     </form>
                 </Modal>

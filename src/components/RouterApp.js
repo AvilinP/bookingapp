@@ -17,7 +17,7 @@ export default function RouterApp() {
             <Router>
                 <Menu />
 
-                    {/* exact comp. is used when we need to avoid partial matching */}
+                {/* exact comp. is used when we need to avoid partial matching */}
                 <Route path="/" exact component={Home} />
                 <Route path="/arrivals" component={CardList} />
                 <Route path="/form" component={Form} />

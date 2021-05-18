@@ -5,7 +5,7 @@ import ModalConfirm from "./ModalConfirm";
 
 const isAdmin = true;
 
-function Form({cart,setCart, addToCart}) {
+function Form() {
 
   const initialValues = {
     firstName: " ",
@@ -35,19 +35,6 @@ function Form({cart,setCart, addToCart}) {
       {isAdmin ?
         (
           <div className="min-h-screen">
-
-            {/* to show product(s) */}
-           
-              {/* {cart.map((product, id) => {
-                return (
-                <div className="product" key={id}>
-                  <h3>{product.name}</h3>
-                  <h4>${product.description}</h4>  
-                </div>
-              )})
-              } */}
-            
-
 
               <form className="mt-12 flex flex-col items-center" onSubmit={onHandleSubmit} >
                 <label>First Name </label>
