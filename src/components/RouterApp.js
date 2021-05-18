@@ -5,6 +5,7 @@ import CardList from "./CardList";
 import Form from "./Form";
 import Login from "./Login";
 import MyBookings from "./MyBookings";
+import Cart from "./Cart";
 import SearchList from "./SearchList";
 import Registration from "./Registration";
 import CreateProducts from "./CreateProducts";
@@ -22,7 +23,7 @@ export default function RouterApp() {
                 <Route path="/arrivals" component={CardList} />
                 <Route path="/form" component={Form} />
                 <Route path="/login" component={Login} />
-                <Route path="/cart" component={MyBookings} />
+                <Route path="/cart" component={Cart} />
                 <Route path="/search" component={SearchList} />
                 <Route path="/registration" component={Registration} />
                 <Route path="/createProducts" component={CreateProducts} />

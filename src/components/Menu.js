@@ -1,8 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import {useCart} from "./CartProvider";
 
 
 function Menu() {
+
+    const items = useCart()
+
     return (
 
         <div className="sticky top-0">
@@ -14,7 +18,9 @@ function Menu() {
 
                 <Link to="/"> <img className="menu-logo" src="/assets/Dazed Studios.png" alt="Logo" /></Link>
 
-                <Link to="/cart" className="menu-links absolute right-60">cart.</Link>
+                <Link to="/cart" className="menu-links absolute right-60">cart.
+                ({items.length})
+                </Link>
 
                 <Link to="/search" className="menu-links absolute right-28">inspiration.</Link>
 

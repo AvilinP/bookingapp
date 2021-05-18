@@ -2,9 +2,17 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Modal from "react-modal";
 import axios from "axios";
+import {useDispatchCart} from "./CartProvider";
 
 
-function Card({ productName, productPrice, productDescription, productImage }) {
+function Card({ product, productName, productPrice, productDescription, productImage }) {
+
+    const dispatch = useDispatchCart();
+
+    const addToCart = (item) => {
+        console.log(item)
+        dispatch({type: "ADD", item})
+    }
 
     const customStyles = {
         content: {
@@ -59,8 +67,6 @@ function Card({ productName, productPrice, productDescription, productImage }) {
     }
 
 
-
-
     return (
 
         <div className="border-2 border-black flex flex-col">
@@ -84,7 +90,9 @@ function Card({ productName, productPrice, productDescription, productImage }) {
 
                 {/* <Link to="/form"> */}
                 <button
-                    className="btn w-48 md:w-96" onClick={openModal}> buy.</button>
+                    className="btn w-48 md:w-96" onClick={openModal}> modal.</button>
+                    <button
+                    className="btn w-48 md:w-96" onClick={() => addToCart(product)}> buy.</button>
                 {/* </Link> */}
 
                 <Modal
@@ -98,6 +106,7 @@ function Card({ productName, productPrice, productDescription, productImage }) {
                     <button onClick={closeModal}>(X)</button>
                     <div> please fill in your info before adding to cart.</div>
                     <form className="my-12" onSubmit={onHandleSubmit}>
+
                         <input 
                         className="input-border mx-1" 
                         type="text" 
@@ -105,6 +114,7 @@ function Card({ productName, productPrice, productDescription, productImage }) {
                         placeholder="your name" required
                         value={modalFormValues.name} 
                         onChange={onHandleChange} />
+
                         <input 
                         className="input-border mx-1" 
                         type="text" 
@@ -112,6 +122,7 @@ function Card({ productName, productPrice, productDescription, productImage }) {
                         placeholder="your address" required
                         value={modalFormValues.address} 
                         onChange={onHandleChange} />
+
                         <input 
                         className="input-border mx-1" 
                         type="number" 
@@ -119,7 +130,11 @@ function Card({ productName, productPrice, productDescription, productImage }) {
                         placeholder="your mobile number" required
                         value={modalFormValues.mobile} 
                         onChange={onHandleChange} />
-                        <button className="btn" type="submit">add to cart.</button>
+
+                        <button 
+                        className="btn" 
+                        type="submit">add to cart.
+                        </button>
                     </form>
                 </Modal>
             </div>

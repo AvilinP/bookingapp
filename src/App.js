@@ -1,5 +1,6 @@
 
-import RouterApp from "./components/RouterApp"
+import RouterApp from "./components/RouterApp";
+
 
 
 function App() {
@@ -8,7 +9,7 @@ function App() {
 
       <RouterApp />
 
-    </div> 
+    </div>
   )
 }
 
