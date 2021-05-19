@@ -1,9 +1,8 @@
-import React, { useState } from "react";
-import axios from "axios";
+import React from "react";
 import {useDispatchCart} from "./CartProvider";
 
 
-function Card({ product, productName, productPrice, productDescription, productImage }) {
+function Card({ product, productId, productName, productPrice, productDescription, productImage }) {
 
     const dispatch = useDispatchCart();
 

@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import Modal from "react-modal";
 import axios from "axios";
 import { useCart, useDispatchCart } from "./CartProvider"
@@ -28,7 +28,9 @@ const CartItem = ({ product, index, handleRemove }) => {
     );
 };
 
-export default function Store() {
+export default function Cart(productId) {
+
+
 
     const customStyles = {
         content: {
@@ -49,8 +51,18 @@ export default function Store() {
         mobile: ""
     }
 
+
     const [modalIsOpen, setIsOpen] = useState(false);
     const [modalFormValues, setModalFormValues] = useState(modalInitialValues)
+    const [userId, setUserId] = useState(null)
+
+    useEffect(() => {
+
+        const userId = localStorage.getItem("userId")
+        console.log("Loggedin userId is:", userId)
+        setUserId() // korrekt??
+
+    }, [])
 
 
     function openModal() {
@@ -68,12 +80,17 @@ export default function Store() {
     async function onHandleSubmit(e) {
         e.preventDefault();
 
+
         try {
             const response = await axios.post("http://localhost:1337/user-carts", {
             name: modalFormValues.name,
             address: modalFormValues.address,
-            mobile:Number(modalFormValues.mobile)
+            mobile:Number(modalFormValues.mobile),
+            users_permissions_user:"suratanter",
+         //   userId: userId, // data from state that's updated by localstorage and useEffect
+            productId: productId // data from CardLists props
         }) 
+        console.log("added product to cart", productId)
         console.log("added to userCart",response)
         } 
         catch(error) {
@@ -94,7 +111,7 @@ export default function Store() {
 
     if (items.length === 0) {
         return (
-            <main>
+            <main className="min-h-screen flex justify-center pt-14">
                 <p>Cart is empty</p>
             </main>
         );
@@ -132,7 +149,7 @@ export default function Store() {
                 >
 
                     <button onClick={closeModal}>(X)</button>
-                    <div> please fill in your info before adding to cart.</div>
+                    <div> please fill in your info so we can send your order.</div>
                     <form className="my-12" onSubmit={onHandleSubmit}>
 
                         <input 
@@ -161,7 +178,7 @@ export default function Store() {
 
                         <button 
                         className="btn" 
-                        type="submit">add to cart.
+                        type="submit">confirm order.
                         </button>
                     </form>
                 </Modal>

@@ -12,7 +12,7 @@ function Menu() {
         <div className="sticky top-0">
             <nav className="h-auto flex flex-wrap flex-row justify-center items-center flex-1">
 
-                <Link to="/" className="menu-links absolute left-8">shop.</Link>
+                <Link to="/arrivals" className="menu-links absolute left-8">shop.</Link>
 
                 <Link to="/arrivals" className="menu-links absolute left-24">new arrivals.</Link>
 

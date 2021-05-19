@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useHistory } from "react-router-dom";
 import axios from "axios";
 import CreateProducts from "./CreateProducts";
@@ -15,12 +15,21 @@ function Login() {
   const [error, setError] = useState("")
   const [auth, setAuth] = useState("")
   const [username, setUsername] = useState("")
+  const [jwt, setJwt] = useState("")
   const history = useHistory();
 
 
   function handleOnChange(e) {
     setFormValues({ ...formValues, [e.target.name]: e.target.value })
   }
+
+  useEffect(()=>{
+     
+    const JWT = localStorage.getItem("jwt")
+    setJwt(JWT);
+ 
+ 
+   }, [])
 
   function handleOnSubmit(e) {
     e.preventDefault();
@@ -33,11 +42,16 @@ function Login() {
         password: formValues.password,
       })
       .then(response => {
-        console.log("User token", response.data.jwt);
-        console.log("userdata", response.data)
+        console.log("User profile", response.data.user)
+        console.log("User token", response.data.jwt)
         setUsername(response.data.user.username)
+
+        localStorage.setItem("jwt", response.data.jwt)
+        localStorage.setItem("userId", response.data.user.id)
+        localStorage.setItem("userEmail", response.data.user.email)
+
         setAuth(true);
-        history.push("/login/createProducts") // tar inte med username, men ändrar till rätt url.
+        history.push("/login/createProducts") 
       })
 
 
@@ -55,7 +69,7 @@ function Login() {
     { auth ? 
     
     <> 
-     <div className="text-center"> Välkommen {username} </div>
+     <div className="text-center"> Welcome {username} </div>
      <div> <CreateProducts /> </div>
 
      

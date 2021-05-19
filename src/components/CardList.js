@@ -44,6 +44,7 @@ export default function CardList() {
                         <Card
                             product={product} 
                             key={product.id}
+                            productId={product.id}
                             productName={product.name}
                             productDescription={product.description} productPrice={product.price}
                             productImage={product.img} />
