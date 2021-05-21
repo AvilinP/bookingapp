@@ -2,6 +2,7 @@ import React, {useState, useEffect} from "react";
 import Modal from "react-modal";
 import axios from "axios";
 import { useCart, useDispatchCart } from "./CartProvider"
+import { data } from "autoprefixer";
 
 const CartItem = ({ product, index, handleRemove }) => {
     return (
@@ -25,10 +26,13 @@ const CartItem = ({ product, index, handleRemove }) => {
                 </div>
             </article>
         </div>
+        
     );
 };
 
-export default function Cart(productId) {
+
+
+export default function Cart() {
 
 
 
@@ -54,16 +58,10 @@ export default function Cart(productId) {
 
     const [modalIsOpen, setIsOpen] = useState(false);
     const [modalFormValues, setModalFormValues] = useState(modalInitialValues)
-    const [userId, setUserId] = useState(null)
-
-    useEffect(() => {
-
-        const userId = localStorage.getItem("userId")
-        console.log("Loggedin userId is:", userId)
-        setUserId() // korrekt??
-
-    }, [])
-
+    const [userId, setUserId] = useState(localStorage.getItem("userId"))
+    const [productsInCart, setProductsInCart] = useState(localStorage.getItem("productsInCart"))
+    
+    
 
     function openModal() {
         setIsOpen(true)
@@ -86,11 +84,9 @@ export default function Cart(productId) {
             name: modalFormValues.name,
             address: modalFormValues.address,
             mobile:Number(modalFormValues.mobile),
-            users_permissions_user:"suratanter",
-         //   userId: userId, // data from state that's updated by localstorage and useEffect
-            productId: productId // data from CardLists props
+            users_permissions_user: userId, 
+            product: productsInCart // data from CardLists props
         }) 
-        console.log("added product to cart", productId)
         console.log("added to userCart",response)
         } 
         catch(error) {

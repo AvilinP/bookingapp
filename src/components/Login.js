@@ -48,7 +48,8 @@ function Login() {
 
         localStorage.setItem("jwt", response.data.jwt)
         localStorage.setItem("userId", response.data.user.id)
-        localStorage.setItem("userEmail", response.data.user.email)
+        localStorage.setItem("userEmail", response.data.user.email) // används?
+       
 
         setAuth(true);
         history.push("/login/createProducts") 

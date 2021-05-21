@@ -13,10 +13,12 @@ export default function CardList() {
     useEffect(() => {
         const fetchProducts = async () => {
             const response = await axios.get(`http://localhost:1337/products?_limit=${loadPage}`)
-            console.log(response)
-
+           
+           
             //update state
             setProducts(response.data)
+
+            
 
         }
 
@@ -40,12 +42,11 @@ export default function CardList() {
 
                 {products.map((product) => {
                     return (
-                        // productName is value used with props in Card.js
                         <Card
                             product={product} 
                             key={product.id}
                             productId={product.id}
-                            productName={product.name}
+                            productName={product.name} // productName is value used with props in Card.js
                             productDescription={product.description} productPrice={product.price}
                             productImage={product.img} />
                     )

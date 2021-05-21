@@ -9,6 +9,7 @@ function Card({ product, productId, productName, productPrice, productDescriptio
     const addToCart = (item) => {
         console.log(item)
         dispatch({type: "ADD", item})
+        localStorage.setItem("productsInCart", `${productId}`) //funkar endast med en produkt
     }
 
     return (

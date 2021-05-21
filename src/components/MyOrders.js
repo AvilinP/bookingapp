@@ -6,14 +6,16 @@ import axios from "axios";
 export default function MyOrders() {
 
     const [cartData, setCartData] = useState([])
+    const [userId, setUserId] = useState(localStorage.getItem("userId"))
+
 
     useEffect(() => {
+
         const fetchData = async () => {
 
             try {
-                const response = await axios.get("http://localhost:1337/user-carts?users_permissions_user.id=24")
+                const response = await axios.get(`http://localhost:1337/user-carts?users_permissions_user.id=${userId}`)
                 console.log(response.data)
-                const res = response.data
                 setCartData(response.data)
             }
 
@@ -46,8 +48,10 @@ export default function MyOrders() {
                                 {cart.name} 
                                 {cart.address}
                                 {cart.mobile}
+                                {cart.users_permissions_user.username}
                                 {cart.users_permissions_user.id}
-                                {/* {cart.product.name} */}
+                                {cart.users_permissions_user.email}
+                                {/* {cart.product.name} */} 
                                 </div>)}
                         </div>
 
