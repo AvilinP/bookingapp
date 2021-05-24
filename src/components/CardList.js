@@ -11,21 +11,20 @@ export default function CardList() {
 
     // useEffect for fetching data from db, feeds more data into jsx (ex in card > return)
     useEffect(() => {
+        
         const fetchProducts = async () => {
+
             const response = await axios.get(`http://localhost:1337/products?_limit=${loadPage}`)
-           
-           
+                      
             //update state
             setProducts(response.data)
-
-            
 
         }
 
         // call method
         fetchProducts()
 
-    }, [loadPage]) //fungerar med tom array?
+    }, [loadPage]) 
 
     function loadMore() {
         let dynamicPage = loadPage + 3;

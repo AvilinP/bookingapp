@@ -3,6 +3,7 @@ import Modal from "react-modal";
 import axios from "axios";
 import { useCart, useDispatchCart } from "./CartProvider"
 import { data } from "autoprefixer";
+import { Link } from "react-router-dom";
 
 const CartItem = ({ product, index, handleRemove }) => {
     return (
@@ -130,7 +131,6 @@ export default function Cart() {
                     currency: "SEK"
                 })}
 
-                {/* ADD MODAL HERE!     */}
                 <button 
                 className="btn mt-12 w-full"
                 onClick={openModal}> buy items.</button>
@@ -174,8 +174,10 @@ export default function Cart() {
 
                         <button 
                         className="btn" 
-                        type="submit">confirm order.
+                        type="submit"> 
+                        confirm order.
                         </button>
+                      
                     </form>
                 </Modal>
 

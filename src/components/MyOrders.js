@@ -1,67 +1,47 @@
-import React, {useEffect, useState} from "react";
-import axios from "axios";
+import React from "react";
 
 
 
-export default function MyOrders() {
-
-    const [cartData, setCartData] = useState([])
-    const [userId, setUserId] = useState(localStorage.getItem("userId"))
-
-
-    useEffect(() => {
-
-        const fetchData = async () => {
-
-            try {
-                const response = await axios.get(`http://localhost:1337/user-carts?users_permissions_user.id=${userId}`)
-                console.log(response.data)
-                setCartData(response.data)
-            }
-
-            catch (err) {
-                console.log(err)
-            }
-
-        }
-        fetchData()
-    }, [])
+export default function MyOrders({ cart, CustomerName, CustomerAddress, CustomerMobile, CustomerUsername, CustomerEmail, orderProductsName, orderProductImage }) {
 
 
     return (
         <>
-            <div className="min-h-screen">
-                <div className="flex flex-wrap justify-center">
+            
+                
                     <div className="bg-white border-black p-6 m-4">
 
                         <div className="text-2xl font-bold mb-2 ml-3 justify-center">
-                            congrats.
+                            congrats.  {CustomerName}
+
                 </div>
 
                         <div className="text-gray-800 leading-relaxed mb-6 ml-3">
-                            Your order(s) is confirmed.
+                            Your order(s) is confirmed. 
                 </div>
 
+                <img className="p-1 object-cover" src={`http://localhost:1337${orderProductImage.formats.small.url}`} alt="Products possible to buy" />
+
+
                         <div>
-                            {cartData.map(cart => 
-                            <div className="m-2 p-2" key={cart.id}>  
-                                {cart.name} 
-                                {cart.address}
-                                {cart.mobile}
-                                {cart.users_permissions_user.username}
-                                {cart.users_permissions_user.id}
-                                {cart.users_permissions_user.email}
-                                {/* {cart.product.name} */} 
-                                </div>)}
+                            {orderProductsName}
                         </div>
+
+                        <div>
+                            {CustomerAddress}
+                        </div>
+
+                        <div>
+                            {CustomerMobile}
+                        </div>
+
 
                         <button className="btn">Cancel order</button>
                         <button className="btn">Change order</button>
 
 
                     </div>
-                </div>
-            </div>
+                
         </>
     )
 }
