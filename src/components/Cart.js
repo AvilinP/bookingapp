@@ -3,7 +3,6 @@ import Modal from "react-modal";
 import axios from "axios";
 import { useCart, useDispatchCart } from "./CartProvider"
 import { data } from "autoprefixer";
-import { Link } from "react-router-dom";
 
 const CartItem = ({ product, index, handleRemove }) => {
     return (
