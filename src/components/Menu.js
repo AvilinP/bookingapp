@@ -40,7 +40,7 @@ function Menu() {
 
                         <Link to="/search" className="menu-links absolute right-28">inspiration.</Link>
 
-                        <Link onClick={clearLocalStorage} className="menu-links absolute right-8">logout. </Link>
+                        <Link to="" onClick={clearLocalStorage} className="menu-links absolute right-8">logout. </Link>
 
                     </> 
                     :
