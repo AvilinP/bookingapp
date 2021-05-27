@@ -15,7 +15,6 @@ function Registration() {
     const [registerValues, setRegisterValues] = useState(initialValues)
 
     // to show different divs depending on logged in state
-    // const [username, setUsername] = useState(""); // example with set username 
     const [loggedIn, setLoggedIn] = useState(false)
     const [error, setError] = useState("")
 
@@ -31,9 +30,10 @@ function Registration() {
             username: registerValues.username,
             email: registerValues.email,
             password: registerValues.password,
-        }).then((e) => { if(e.data.user) setLoggedIn(true) })
-        .catch((err)=> {
-            setError(err.response.data.message[0].messages[0].message)})
+        }).then((e) => { if (e.data.user) setLoggedIn(true) })
+            .catch((err) => {
+                setError(err.response.data.message[0].messages[0].message)
+            })
     }
 
 
@@ -50,9 +50,9 @@ function Registration() {
                             Register
                     </h2>
 
-                    <div className="text-white text-2xl text-center pt-2">
-                        {error}
-                    </div>
+                        <div className="text-white text-2xl text-center pt-2">
+                            {error}
+                        </div>
 
                     </div>
                     <form className="mt-8 space-y-6" action="#" method="POST"

@@ -2,6 +2,7 @@ import React from "react";
 import {useDispatchCart} from "./CartProvider";
 
 
+
 function Card({ product, productId, productName, productPrice, productDescription, productImage }) {
 
     const dispatch = useDispatchCart();
@@ -9,7 +10,7 @@ function Card({ product, productId, productName, productPrice, productDescriptio
     const addToCart = (item) => {
         console.log(item)
         dispatch({type: "ADD", item})
-        localStorage.setItem("productsInCart", `${productId}`) //funkar endast med en produkt
+        localStorage.setItem("productsInCart", `${productId}`) //only works with one product atm
     }
 
     return (
@@ -33,7 +34,7 @@ function Card({ product, productId, productName, productPrice, productDescriptio
                     {productPrice} SEK
                 </div>
                     <button
-                    className="btn w-48 md:w-96" onClick={() => addToCart(product)}> buy.</button>
+                    className="btn w-48 md:w-96" onClick={() => addToCart(product)}>buy.</button>
  
             </div>
 

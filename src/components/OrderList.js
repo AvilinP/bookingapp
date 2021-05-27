@@ -6,6 +6,7 @@ function OrderList() {
 
     const [cartData, setCartData] = useState([])
     const [userId, setUserId] = useState(localStorage.getItem("userId"))
+    const [token, setToken] = useState(localStorage.getItem("jwt"))
 
 
     useEffect(() => {
@@ -13,9 +14,19 @@ function OrderList() {
         const fetchData = async () => {
 
             try {
-                const response = await axios.get(`http://localhost:1337/user-carts?users_permissions_user.id=${userId}`)
+                const response = await axios.get(`http://localhost:1337/user-carts?users_permissions_user.id=${userId}`
+                ,
+                {
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                    },
+
+                }
+                
+                
+                )
                 setCartData(response.data)
-                console.log(response.data)
+                console.log(response.data) 
 
                 setCartData(response.data)
             }

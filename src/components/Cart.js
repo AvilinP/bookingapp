@@ -1,8 +1,9 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import Modal from "react-modal";
 import axios from "axios";
 import { useCart, useDispatchCart } from "./CartProvider"
 import { data } from "autoprefixer";
+import { Link } from "react-router-dom";
 
 const CartItem = ({ product, index, handleRemove }) => {
     return (
@@ -26,7 +27,7 @@ const CartItem = ({ product, index, handleRemove }) => {
                 </div>
             </article>
         </div>
-        
+
     );
 };
 
@@ -35,10 +36,8 @@ const CartItem = ({ product, index, handleRemove }) => {
 export default function Cart() {
 
 
-
     const customStyles = {
         content: {
-            // height: '300px',
             top: '50%',
             left: '50%',
             right: 'auto',
@@ -51,7 +50,7 @@ export default function Cart() {
 
     const modalInitialValues = {
         name: "",
-        address: "", 
+        address: "",
         mobile: ""
     }
 
@@ -59,9 +58,11 @@ export default function Cart() {
     const [modalIsOpen, setIsOpen] = useState(false);
     const [modalFormValues, setModalFormValues] = useState(modalInitialValues)
     const [userId, setUserId] = useState(localStorage.getItem("userId"))
+    const [username, setUsername] = useState(localStorage.getItem("username"))
+    const [token, setToken] = useState(localStorage.getItem("jwt"))
     const [productsInCart, setProductsInCart] = useState(localStorage.getItem("productsInCart"))
-    
-    
+
+    const [confirmCart, setConfirmCart] = useState("")
 
     function openModal() {
         setIsOpen(true)
@@ -78,24 +79,28 @@ export default function Cart() {
     async function onHandleSubmit(e) {
         e.preventDefault();
 
-
         try {
             const response = await axios.post("http://localhost:1337/user-carts", {
-            name: modalFormValues.name,
-            address: modalFormValues.address,
-            mobile:Number(modalFormValues.mobile),
-            users_permissions_user: userId, 
-            product: productsInCart // data from CardLists props
-        }) 
-        console.log("added to userCart",response)
-        } 
-        catch(error) {
+                name: username,
+                address: modalFormValues.address,
+                mobile: Number(modalFormValues.mobile),
+                users_permissions_user: userId,
+                product: productsInCart // data from CardLists props
+            },
+                {
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                    }
+                }
+            )
+            setConfirmCart(true)
+            console.log("added to userCart", response)
+        }
+        catch (error) {
             console.log(error.data)
         }
 
     }
-
-
 
     const items = useCart();
     const dispatch = useDispatchCart();
@@ -112,6 +117,12 @@ export default function Cart() {
             </main>
         );
     }
+
+
+    // const refreshPage = ()=>{
+    //     window.location.reload();
+    //  }
+
     return (
         <main className="min-h-screen flex pt-14">
             {items.map((item, index) => (
@@ -130,55 +141,56 @@ export default function Cart() {
                     currency: "SEK"
                 })}
 
-                <button 
-                className="btn mt-12 w-full"
-                onClick={openModal}> buy items.</button>
+                <button
+                    className="btn mt-12 w-full"
+                    onClick={openModal}> buy items.</button>
             </p>
 
             <Modal
-                    isOpen={modalIsOpen}
-                    onRequestClose={closeModal}
-                    style={customStyles}
-                    ariaHideApp={false}
-                    contentLabel="Add to cart Modal"
-                >
+                isOpen={modalIsOpen}
+                onRequestClose={closeModal}
+                style={customStyles}
+                ariaHideApp={false}
+                contentLabel="Add to cart Modal"
+            >
 
-                    <button onClick={closeModal}>(X)</button>
-                    <div> please fill in your info so we can send your order.</div>
-                    <form className="my-12" onSubmit={onHandleSubmit}>
+                <button onClick={closeModal}>(X)</button>
+                <div> {confirmCart ? <> Success! <Link to="/order"> <button className="btn" > See your order </button></Link> </> : <> please fill in your info so we can send your order. </>}
+                </div>
+                <form className="my-12" onSubmit={onHandleSubmit}>
 
-                        <input 
-                        className="input-border mx-1" 
-                        type="text" 
-                        name="name" 
+                    <input
+                        className="input-border mx-1"
+                        type="text"
+                        name="name"
                         placeholder="your name" required
-                        value={modalFormValues.name} 
+                        value={username}
                         onChange={onHandleChange} />
 
-                        <input 
-                        className="input-border mx-1" 
-                        type="text" 
-                        name="address" 
+                    <input
+                        className="input-border mx-1"
+                        type="text"
+                        name="address"
                         placeholder="your address" required
-                        value={modalFormValues.address} 
+                        value={modalFormValues.address}
                         onChange={onHandleChange} />
 
-                        <input 
-                        className="input-border mx-1" 
-                        type="number" 
-                        name="mobile" 
+                    <input
+                        className="input-border mx-1"
+                        type="number"
+                        name="mobile"
                         placeholder="your mobile number" required
-                        value={modalFormValues.mobile} 
+                        value={modalFormValues.mobile}
                         onChange={onHandleChange} />
 
-                        <button 
-                        className="btn" 
-                        type="submit"> 
+                    <button
+                        className="btn"
+                        type="submit">
                         confirm order.
-                        </button>
-                      
-                    </form>
-                </Modal>
+                    </button>
+
+                </form>
+            </Modal>
 
 
         </main>
