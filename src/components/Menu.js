@@ -32,6 +32,8 @@ function Menu() {
 
                         <Link to="/arrivals" className="menu-links absolute left-40">new arrivals.</Link>
 
+                        <Link to="/order" className="menu-links absolute left-72">order(s).</Link>
+
                         <Link to="/"> <img className="menu-logo" src="/assets/Dazed Studios.png" alt="Logo" /></Link>
 
                         <Link to="/cart" className="menu-links absolute right-60">cart.
@@ -40,7 +42,7 @@ function Menu() {
 
                         <Link to="/search" className="menu-links absolute right-28">inspiration.</Link>
 
-                        <Link to="" onClick={clearLocalStorage} className="menu-links absolute right-8">logout. </Link>
+                        <Link to="/login" onClick={clearLocalStorage} className="menu-links absolute right-8">logout. </Link>
 
                     </> 
                     :
