@@ -1,8 +1,36 @@
 import React from "react";
+import axios from "axios";
+import { loadStripe } from '@stripe/stripe-js'; 
+const stripePromise = loadStripe('pk_test_51Ix6OEDxXBHCoNT5jrWDD1Fjdd8qWVWSKb7FVNNJDa08a93xfDPkJ0fcaLp0UWPEusKLNbSljGsff8MFbNLQywsD00nchhFWFG');
 
 
 
 export default function MyOrders({ cart, CustomerName, CustomerAddress, CustomerMobile, CustomerUsername, CustomerEmail, orderProductsName, orderProductImage, orderProductDesc }) {
+
+    const handleClick = async (event) => {
+        // Get Stripe.js instance
+        const stripe = await stripePromise;
+
+        // Call your backend to create the Checkout Session
+        const response = await axios.post("http://localhost:4242/create-checkout-session")
+        console.log(response)
+
+        const session = response.data.id
+        console.log(session)
+
+        // When the customer clicks on the button, redirect them to Checkout.
+        const result = await stripe.redirectToCheckout({
+            sessionId: session,
+        });
+
+        if (result.error) {
+            // If `redirectToCheckout` fails due to a browser or network
+            // error, display the localized error message to your customer
+            // using `result.error.message`.
+        }
+
+
+    }
 
 
     return (
@@ -41,6 +69,10 @@ export default function MyOrders({ cart, CustomerName, CustomerAddress, Customer
 
                 <button className="btn">Cancel order</button>
                 <button className="btn">Change order</button>
+
+                <button role="link" onClick={handleClick}>
+                    Checkout
+                </button>
 
 
             </div>
