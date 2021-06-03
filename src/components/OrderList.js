@@ -62,6 +62,7 @@ function OrderList() {
                                 orderProductsName={cart.product.name}
                                 orderProductImage={cart.product.img}
                                 orderProductDesc={cart.product.description}
+                                orderProductPrice={cart.product.price}
                             />
                         )
                     })}
