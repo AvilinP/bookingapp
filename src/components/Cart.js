@@ -94,6 +94,8 @@ export default function Cart() {
                 }
             )
             setConfirmCart(true)
+            //window.location.reload();
+
             console.log("added to userCart", response)
         }
         catch (error) {

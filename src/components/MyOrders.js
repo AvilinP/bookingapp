@@ -13,7 +13,7 @@ export default function MyOrders({ cart, CustomerName, CustomerAddress, Customer
 
         // Call your backend to create the Checkout Session
         const response = await axios.post("http://localhost:4242/create-checkout-session", {
-            prodName: orderProductsName, prodPrice: orderProductPrice 
+            prodName: orderProductsName, prodPrice: orderProductPrice
         })
         console.log(response)
 

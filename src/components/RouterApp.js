@@ -8,7 +8,7 @@ import SearchList from "./SearchList";
 import Registration from "./Registration";
 import CreateProducts from "./CreateProducts";
 import MyOrders from "./MyOrders";
-import OrderList from "./OrderList"
+import OrderList from "./OrderList";
 import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
 
 export default function RouterApp() {

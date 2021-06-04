@@ -27,8 +27,7 @@ function OrderList() {
                 )
                 setCartData(response.data)
                 console.log(response.data) 
-
-                setCartData(response.data)
+                
             }
 
             catch (err) {
@@ -63,6 +62,7 @@ function OrderList() {
                                 orderProductImage={cart.product.img}
                                 orderProductDesc={cart.product.description}
                                 orderProductPrice={cart.product.price}
+                                
                             />
                         )
                     })}

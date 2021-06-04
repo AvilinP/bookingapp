@@ -1,5 +1,5 @@
 import React from "react";
-import {useDispatchCart} from "./CartProvider";
+import { useDispatchCart } from "./CartProvider";
 
 
 
@@ -8,9 +8,9 @@ function Card({ product, productId, productName, productPrice, productDescriptio
     const dispatch = useDispatchCart();
 
     const addToCart = (item) => {
+        dispatch({ type: "ADD", item })
+        localStorage.setItem("productsInCart", `${productId}`) //only works with one product atm. might disturb resetting of cart
         console.log(item)
-        dispatch({type: "ADD", item})
-        localStorage.setItem("productsInCart", `${productId}`) //only works with one product atm
     }
 
     return (
@@ -33,9 +33,9 @@ function Card({ product, productId, productName, productPrice, productDescriptio
                 <div className="text-gray-800 font-extrabold leading-relaxed p-2">
                     {productPrice} SEK
                 </div>
-                    <button
+                <button
                     className="btn w-48 md:w-96" onClick={() => addToCart(product)}>buy.</button>
- 
+
             </div>
 
         </div>
