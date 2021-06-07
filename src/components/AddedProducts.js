@@ -1,8 +1,23 @@
 import React from "react";
+import axios from "axios";
 
 
 
-function AddedProducts({ productName, productDescription, productPrice, productImage }) {
+function AddedProducts({ productName, productDescription, productPrice, productImage, productId }) {
+
+    function DeleteProduct() {
+        try {
+            const deleteResponse = axios.delete(`http://localhost:1337/products/${productId}`)
+            // uppdatera sidan så listan uppdateras?
+            console.log("deleted product", deleteResponse)
+        }
+
+        catch (error) {
+            console.log("failed to delete product", error.data)
+        }
+
+    }
+
     return (
    
         <>
@@ -22,7 +37,7 @@ function AddedProducts({ productName, productDescription, productPrice, productI
                     {productPrice}
                 </div>
 
-                <button className="btn">Delete</button>
+                <button className="btn" onClick={DeleteProduct}>Delete</button>
                 <button className="btn">Update</button>
             </div>
 

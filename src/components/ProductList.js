@@ -4,7 +4,7 @@ import AddedProducts from "./AddedProducts";
 
 function ProductList() {
 
-    const [products, setProducts] = useState([]);
+    const [getProducts, setProducts] = useState([]);
 
 
     useEffect(() => {
@@ -14,8 +14,6 @@ function ProductList() {
             try {
                 const response = await axios.get(`http://localhost:1337/products`)
                 setProducts(response.data)
-                console.log(response.data) 
-                
             }
 
             catch (err) {
@@ -27,11 +25,13 @@ function ProductList() {
 
     }, [])
 
+    console.log(getProducts)
+
     return (
         <>
             <div className="min-h-screen ml-1 mr-1 pb-10 gap-1 grid grid-cols-1 xl:grid-cols-3">
 
-                {products.map((product) => {
+                {getProducts.map((product) => {
                     return (
                         <AddedProducts
                             product={product}
