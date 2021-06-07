@@ -2,6 +2,9 @@
   "name": "bookingapp",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": "v12.19.0"
+  },
   "dependencies": {
     "@craco/craco": "^6.1.1",
     "@stripe/stripe-js": "^1.15.0",
