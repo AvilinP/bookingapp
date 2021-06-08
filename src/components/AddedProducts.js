@@ -1,20 +1,31 @@
-import React from "react";
+import React, { useEffect } from "react";
 import axios from "axios";
+import {Link} from "react-router-dom";
 
 
 
 function AddedProducts({ productName, productDescription, productPrice, productImage, productId }) {
+
+    
 
     function DeleteProduct() {
         try {
             const deleteResponse = axios.delete(`http://localhost:1337/products/${productId}`)
             // uppdatera sidan så listan uppdateras?
             console.log("deleted product", deleteResponse)
+            window.location.reload()
         }
 
         catch (error) {
             console.log("failed to delete product", error.data)
         }
+
+    }
+
+
+    function SetProductId() {
+        console.log("clicked", productId)
+        localStorage.setItem("updateProductId", productId)
 
     }
 
@@ -38,7 +49,9 @@ function AddedProducts({ productName, productDescription, productPrice, productI
                 </div>
 
                 <button className="btn" onClick={DeleteProduct}>Delete</button>
-                <button className="btn">Update</button>
+                <Link to ="/updateProducts"> 
+                <button className="btn" onClick={SetProductId}>Update</button>
+                </Link>
             </div>
 
             

@@ -7,6 +7,7 @@ import Cart from "./Cart";
 import SearchList from "./SearchList";
 import Registration from "./Registration";
 import CreateProducts from "./CreateProducts";
+import UpdateProducts from "./UpdateProducts";
 import MyOrders from "./MyOrders";
 import OrderList from "./OrderList";
 import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
@@ -26,6 +27,7 @@ export default function RouterApp() {
                         <Route path="/search" component={SearchList} />
                         <Route path="/registration" component={Registration} />
                         <Route path="/createProducts" component={CreateProducts} />
+                        <Route path="/updateProducts" component={UpdateProducts} />
                         <Route path="/order" component={OrderList} />
                     </Switch>
 

@@ -1,11 +1,7 @@
-import React, { useState } from "react";
+import React, {useState, useEffect} from "react";
 import axios from "axios";
-import AddedProducts from "./AddedProducts";
-import ProductList from "./ProductList";
 
-
-
-function CreateProducts() {
+function UpdateProducts(productId) {
 
     const formInitialValues = {
         name: "",
@@ -14,11 +10,28 @@ function CreateProducts() {
     }
 
     const [formValues, setFormValues] = useState(formInitialValues)
-    const [fileData, setFileData] = useState()
+    const [fileData, setFileData] = useState(null)
+
+    const updateProductId = Number(localStorage.getItem("updateProductId"))
+
+    useEffect(() => {
+        axios.get(`http://localhost:1337/products/${updateProductId}`)
+        .then(res => {
+            setFormValues({
+                name: res.data.name,
+                description: res.data.description,
+                price: res.data.price,
+            })
+        })
+    }, [])
+    
 
 
     function handleOnChange(e) {
-        setFormValues({ ...formValues, [e.target.name]: e.target.value })
+        setFormValues({ 
+            ...formValues, 
+            [e.target.name]: e.target.value 
+        })
         console.log(formValues.name, formValues.description, formValues.price)
     }
 
@@ -29,26 +42,24 @@ function CreateProducts() {
     function handleOnSubmit(e) {
         e.preventDefault();
 
-        axios.post("http://localhost:1337/products", {
-            name: formValues.name,
-            description: formValues.description,
-            price: formValues.price,
-        }).then((response) => {
+        axios.put(`http://localhost:1337/products/${updateProductId}`, 
+            formValues
+       ).then((response) => {
             console.log(response.data)
 
             // img file upload
             const data = new FormData();
             data.append("files", fileData)
             data.append("ref", "product") // append to collection
-            data.append("refId", response.data.id) // append to above product id  
+            data.append("refId", productId) // append to above product id  
             data.append("field", "img") // append to field in collection
             axios.post("http://localhost:1337/upload", data)
                 .then((image) => console.log(image))
                 .catch((err) => console.log(err))
                 
 
-        }).catch((err) => {
-            console.log(err)
+        }).then(() => {
+            setFormValues(formInitialValues)
         })
 
 
@@ -100,13 +111,9 @@ function CreateProducts() {
                     />
 
 
-                    <button className="btn mt-4">create product(s).</button>
+                    <button className="btn mt-4">update product(s).</button>
 
                 </form>
-
-                <ProductList>
-                    <AddedProducts />
-                </ProductList>
 
             </div>
 
@@ -114,7 +121,5 @@ function CreateProducts() {
     )
 }
 
-export default CreateProducts
 
-
-
+export default UpdateProducts
