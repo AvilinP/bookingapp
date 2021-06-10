@@ -14,7 +14,7 @@ export default function CardList() {
         
         const fetchProducts = async () => {
 
-            const response = await axios.get(`http://localhost:1337/products?_limit=${loadPage}`)
+            const response = await axios.get(`https://infinite-falls-19937.herokuapp.com/products?_limit=${loadPage}`)
                       
             //update state
             setProducts(response.data)
