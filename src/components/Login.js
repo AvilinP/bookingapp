@@ -15,6 +15,7 @@ function Login() {
   // const [auth, setAuth] = useState("")
   const [username, setUsername] = useState("")
   const [jwt, setJwt] = useState("")
+  const [role, setRole] = useState("")
   const history = useHistory();
 
 
@@ -26,6 +27,9 @@ function Login() {
 
     const JWT = localStorage.getItem("jwt")
     setJwt(JWT);
+
+    const Role = localStorage.getItem("role")
+    setRole(Role);
 
   }, [])
 
@@ -45,9 +49,9 @@ function Login() {
         localStorage.setItem("jwt", response.data.jwt)
         localStorage.setItem("userId", response.data.user.id)
         localStorage.setItem("username", response.data.user.username)
-
+        localStorage.setItem("Role", response.data.user.role.name)
         // setAuth(true)
-       window.location.reload()
+        window.location.reload()
        // history.push("/arrivals")
         
       })

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import AddedProducts from "./AddedProducts";
 import ProductList from "./ProductList";
@@ -15,6 +15,19 @@ function CreateProducts() {
 
     const [formValues, setFormValues] = useState(formInitialValues)
     const [fileData, setFileData] = useState()
+    const [token, setToken] = useState(localStorage.getItem("jwt"))
+
+    // const [role, setRole] = useState("")
+
+    // useEffect(() => {
+    //     const adminRole = localStorage.getItem("Role");
+    //     setRole(adminRole)
+    //     console.log(adminRole)
+    // }, []);
+
+
+ 
+
 
 
     function handleOnChange(e) {
@@ -33,7 +46,14 @@ function CreateProducts() {
             name: formValues.name,
             description: formValues.description,
             price: formValues.price,
-        }).then((response) => {
+        },
+                {
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                    }
+                }
+        ).then((response) => {
+
             console.log(response.data)
 
             // img file upload
@@ -51,13 +71,13 @@ function CreateProducts() {
             console.log(err)
         })
 
-
-
     }
 
 
     return (
         <>
+
+
             <div className="min-h-screen">
 
 
@@ -109,6 +129,8 @@ function CreateProducts() {
                 </ProductList>
 
             </div>
+
+
 
         </>
     )
