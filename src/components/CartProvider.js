@@ -8,11 +8,13 @@ const reducer = (state, action) => {
         case "ADD":
             return [...state, action.item]
 
-        
         case "REMOVE":
             const newArray = [...state];
             newArray.splice(action.index, 1)
-            return newArray;    
+            return newArray;
+
+        case "CLEARCART":
+            return[];        
         default:
             throw new Error(`unknow action ${action.type}`)
     }
@@ -20,6 +22,9 @@ const reducer = (state, action) => {
 
 export const CartProvider = ({ children }) => {
     const [state, dispatch] = useReducer(reducer, [])
+
+    console.table("useContext", state)
+
     return (
         <CartDispatchContext.Provider value = {dispatch}>
             <CartStateContext.Provider value={state}>

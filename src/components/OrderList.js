@@ -23,10 +23,12 @@ function OrderList() {
 
                 }
                 
-                
                 )
                 setCartData(response.data)
-                console.log(response.data) 
+                console.log(response.data)
+                
+                const orderLength = (response.data)
+                console.log(orderLength.length) 
                 
             }
 

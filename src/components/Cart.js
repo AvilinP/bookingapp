@@ -61,8 +61,16 @@ export default function Cart() {
     const [username, setUsername] = useState(localStorage.getItem("username"))
     const [token, setToken] = useState(localStorage.getItem("jwt"))
     const [productsInCart, setProductsInCart] = useState(localStorage.getItem("productsInCart"))
-
     const [confirmCart, setConfirmCart] = useState("")
+    const items = useCart()
+    const dispatch = useDispatchCart()
+
+ 
+    useEffect(() => {
+        const userId = localStorage.getItem("userId");
+        setUserId(userId);
+   }, [items]);
+  
 
     function openModal() {
         setIsOpen(true)
@@ -85,45 +93,48 @@ export default function Cart() {
                 address: modalFormValues.address,
                 mobile: Number(modalFormValues.mobile),
                 users_permissions_user: userId,
-                product: productsInCart // data from CardLists props
+                product: productsInCart 
             },
                 {
                     headers: {
                         Authorization: `Bearer ${token}`,
                     }
                 }
-            )
-            setConfirmCart(true)
-            //window.location.reload();
-
-            console.log("added to userCart", response)
-        }
-        catch (error) {
-            console.log(error.data)
-        }
+                    ).then(() => {
+                    localStorage.removeItem("productsInCart")
+                    dispatch({type: "CLEARCART"})
+                    })
+                        console.log(localStorage)
+                        setConfirmCart(true)
+                        console.log("added to userCart", response)
+                            }
+                            catch (error) {
+                                console.log(error.data)
+                            }
 
     }
 
-    const items = useCart();
-    const dispatch = useDispatchCart();
+
     const totalPrice = items.reduce((total, b) => total + b.price, 0);
+ 
 
     const handleRemove = (index) => {
         dispatch({ type: "REMOVE", index });
     };
 
-    if (items.length === 0) {
-        return (
-            <main className="min-h-screen flex justify-center pt-14">
-                <p>Cart is empty</p>
-            </main>
-        );
-    }
+   
+
+    //shows empty cart but disturbs confirmCart logic with order btn below
+    // if (items.length === 0) {
+    //     return (
+    //         <main className="min-h-screen flex justify-center pt-14">
+    //             <p>Cart is empty</p>
+    //         </main>
+    //     );
+    // } 
 
 
-    // const refreshPage = ()=>{
-    //     window.location.reload();
-    //  }
+
 
     return (
         <main className="min-h-screen flex pt-14">

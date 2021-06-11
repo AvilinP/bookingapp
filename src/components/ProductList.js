@@ -12,7 +12,7 @@ function ProductList() {
         const fetchData = async () => {
 
             try {
-                const response = await axios.get(`https://infinite-falls-19937.herokuapp.com/products`)
+                const response = await axios.get(`http://localhost:1337/products`)
                 setProducts(response.data)
             }
 
