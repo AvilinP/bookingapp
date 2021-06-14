@@ -7,6 +7,7 @@ function Menu() {
 
     const items = useCart()
 
+    const getAdmin = localStorage.getItem("role")
     const [jwt, setJwt] = useState("");
 
     useEffect(() => {
@@ -21,14 +22,18 @@ function Menu() {
 
     return (
 
+
         <div className="sticky top-0">
             <nav className="h-auto flex flex-wrap flex-row justify-center items-center flex-1">
 
                 {jwt ?
 
                     <>
+                        {/* Make inline cond. for roles */}
+                        <Link to="/createProducts" className="menu-links absolute left-2">add.</Link>
 
-                        <Link to="/createProducts" className="menu-links absolute left-8">add products.</Link>
+                        <Link to="/profile" className="menu-links absolute left-20">account.</Link> 
+                        
 
                         <Link to="/arrivals" className="menu-links absolute left-40">new arrivals.</Link>
 

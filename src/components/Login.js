@@ -15,7 +15,6 @@ function Login() {
   // const [auth, setAuth] = useState("")
   const [username, setUsername] = useState("")
   const [jwt, setJwt] = useState("")
-  const [role, setRole] = useState("")
   const history = useHistory();
 
 
@@ -27,9 +26,6 @@ function Login() {
 
     const JWT = localStorage.getItem("jwt")
     setJwt(JWT);
-
-    const Role = localStorage.getItem("role")
-    setRole(Role);
 
   }, [])
 

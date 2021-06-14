@@ -16,8 +16,6 @@ function CreateProducts() {
     const [formValues, setFormValues] = useState(formInitialValues)
     const [fileData, setFileData] = useState()
     const [token, setToken] = useState(localStorage.getItem("jwt"))
-    const getAdmin = localStorage.getItem("role")
- 
 
 
     function handleOnChange(e) {
@@ -71,8 +69,6 @@ function CreateProducts() {
     return (
         <>
 
-        {getAdmin === "Admin" ? <p> is admin </p> : <p> is NOT admin </p> }
-        
             <div className="min-h-screen">
 
 

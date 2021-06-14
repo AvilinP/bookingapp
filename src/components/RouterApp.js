@@ -10,6 +10,8 @@ import CreateProducts from "./CreateProducts";
 import UpdateProducts from "./UpdateProducts";
 import MyOrders from "./MyOrders";
 import OrderList from "./OrderList";
+import UserProfile from "./profiles/UserProfile";
+import UserList from "./profiles/UserList";
 import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
 
 export default function RouterApp() {
@@ -28,6 +30,7 @@ export default function RouterApp() {
                         <Route path="/registration" component={Registration} />
                         <Route path="/createProducts" component={CreateProducts} />
                         <Route path="/updateProducts" component={UpdateProducts} />
+                        <Route path="/profile" component={UserList} />
                         <Route path="/order" component={OrderList} />
                     </Switch>
 
