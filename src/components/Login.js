@@ -49,7 +49,7 @@ function Login() {
         localStorage.setItem("jwt", response.data.jwt)
         localStorage.setItem("userId", response.data.user.id)
         localStorage.setItem("username", response.data.user.username)
-        localStorage.setItem("Role", response.data.user.role.name)
+        localStorage.setItem("role", response.data.user.role.name)
         // setAuth(true)
         window.location.reload()
        // history.push("/arrivals")

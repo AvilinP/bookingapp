@@ -16,18 +16,8 @@ function CreateProducts() {
     const [formValues, setFormValues] = useState(formInitialValues)
     const [fileData, setFileData] = useState()
     const [token, setToken] = useState(localStorage.getItem("jwt"))
-
-    // const [role, setRole] = useState("")
-
-    // useEffect(() => {
-    //     const adminRole = localStorage.getItem("Role");
-    //     setRole(adminRole)
-    //     console.log(adminRole)
-    // }, []);
-
-
+    const getAdmin = localStorage.getItem("role")
  
-
 
 
     function handleOnChange(e) {
@@ -65,7 +55,8 @@ function CreateProducts() {
             axios.post("http://localhost:1337/upload", data)
                 .then((image) => console.log(image))
                 .catch((err) => console.log(err))
-                
+
+
 
         }).catch((err) => {
             console.log(err)
@@ -74,10 +65,14 @@ function CreateProducts() {
     }
 
 
+
+
+
     return (
         <>
 
-
+        {getAdmin === "Admin" ? <p> is admin </p> : <p> is NOT admin </p> }
+        
             <div className="min-h-screen">
 
 
