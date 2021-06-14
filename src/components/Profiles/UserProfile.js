@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react";
-import {useHistory, Redirect} from "react-router-dom";
+import {useHistory, Redirect, Link} from "react-router-dom";
 import axios from "axios";
 import MyOrders from "../MyOrders";
 import OrderList from "../OrderList";
@@ -14,7 +14,7 @@ function UserProfile({ UserDataName, UserDataEmail, UserDataCart, UserDataAddres
     const [userId, setUserId] = useState(localStorage.getItem("userId"))
     const [token, setToken] = useState(localStorage.getItem("jwt"))
 
-function DeleteUser() {
+    function DeleteUser() {
 
         try {
             const deleteResponse = axios.delete(`http://localhost:1337/users/${userId}`,
@@ -56,6 +56,10 @@ function DeleteUser() {
 
                 </div>
 
+                <div> 
+                <Link to="/createProducts"><button className="btn mx-0"> handling products. </button> </Link>
+                </div>
+
                 <div className="mt-12"> 
                 
                <GetAllList />
@@ -79,8 +83,8 @@ function DeleteUser() {
  
                    Orders made: {UserDataCart}  <br/>
 
-                    <button className="btn" onClick={DeleteUser}> Delete profile </button>
-                    <button className="btn"> Update profile </button>
+                    <button className="btn" onClick={DeleteUser}> delete profile. </button>
+                    <button className="btn"> update profile. </button>
                    </div>
                 
                     <div className="mt-10">
@@ -106,4 +110,5 @@ function DeleteUser() {
     )
 }
 
-export default UserProfile
+
+export default UserProfile;

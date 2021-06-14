@@ -25,7 +25,6 @@ function AddedProducts({ productName, productDescription, productPrice, productI
     function SetProductId() {
         console.log("clicked", productId)
         localStorage.setItem("updateProductId", productId)
-
     }
 
     return (
