@@ -4,9 +4,9 @@ import UserProfile from "./UserProfile";
 
 export default function UserList() {
 
-const [userData, setUserData] = useState([])
-const [userId, setUserId] = useState(localStorage.getItem("userId"))
-const [token, setToken] = useState(localStorage.getItem("jwt"))
+    const [userData, setUserData] = useState([])
+    const [userId, setUserId] = useState(localStorage.getItem("userId"))
+    const [token, setToken] = useState(localStorage.getItem("jwt"))
 
     useEffect(() => {
 

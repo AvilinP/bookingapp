@@ -3,16 +3,16 @@ import axios from "axios";
 import MyOrders from "../MyOrders";
 import OrderList from "../OrderList";
 import UserList from "./UserList";
+import GetAllList from "./GetAllList";
 
 
-function UserProfile({ UserDataName, UserDataEmail, UserDataCart, UserDataAddress }) {
+function UserProfile({ UserDataName, UserDataEmail, UserDataCart, UserDataAddress, getAllUserskey, getAllUsersName , getAllUsersEmail }) {
 
     const getAdmin = localStorage.getItem("role")
     const getUsername = useState(localStorage.getItem("username"))
     const [userId, setUserId] = useState(localStorage.getItem("userId"))
     const [token, setToken] = useState(localStorage.getItem("jwt"))
-    
-
+  
 
     return (
         <>
@@ -30,8 +30,14 @@ function UserProfile({ UserDataName, UserDataEmail, UserDataCart, UserDataAddres
                    Your profile information: <br/><br/>
                    Username: {UserDataName} <br/>
                    Email: {UserDataEmail}   <br/>
- 
+
+                </div>
+
+                <div className="mt-12"> 
                 
+               <GetAllList />
+
+
                 </div>
 
            </div> 
