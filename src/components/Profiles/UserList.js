@@ -13,15 +13,12 @@ export default function UserList() {
         const fetchData = async () => {
 
             try {
-                const response = await axios.get(`http://localhost:1337/users?id=${userId}`
-                ,
+                const response = await axios.get(`http://localhost:1337/users?id=${userId}`,
                 {
                     headers: {
                         Authorization: `Bearer ${token}`,
                     },
-                }
-                
-                )
+                })
                 setUserData(response.data)
                 console.log(response.data) 
             }

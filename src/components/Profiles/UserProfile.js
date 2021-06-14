@@ -17,11 +17,17 @@ function UserProfile({ UserDataName, UserDataEmail, UserDataCart, UserDataAddres
 function DeleteUser() {
 
         try {
-            const deleteResponse = axios.delete(`http://localhost:1337/users/${userId}`)
+            const deleteResponse = axios.delete(`http://localhost:1337/users/${userId}`,
+            {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                }
+            })
             console.log("deleted user", deleteResponse)
             console.log("clicked", userId)
             localStorage.clear();
             window.location.reload();
+            
         }
 
         catch (error) {
