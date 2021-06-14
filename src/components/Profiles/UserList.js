@@ -39,17 +39,29 @@ export default function UserList() {
     return (
         <>
 
-                    {userData.map((user) => {
-                        return (
-                            <UserProfile
-                                key={user.id}
-                                UserDataName={user.username}
-                                UserDataEmail={user.email}
-                                UserDataCart={user.user_carts.length}
+         <div className="min-h-screen flex justify-center py-20 px-4 sm:px-6 lg:px-8">
+
+            {userData.map((user) => {
+                return (
+                    <UserProfile
+                        key={user.id}
+                        UserDataName={user.username}
+                        UserDataEmail={user.email}
+                        UserDataCart={user.user_carts.length}
 
                             />
                         )
                     })}
+
+
+            {token ? <div></div> 
+            : 
+            <p> Your're not logged in or a registered user </p>
+            }          
+
+         </div> 
+
+
             
         </>
 

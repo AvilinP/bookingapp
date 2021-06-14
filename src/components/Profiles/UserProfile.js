@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from "react";
+import {useHistory, Redirect} from "react-router-dom";
 import axios from "axios";
 import MyOrders from "../MyOrders";
 import OrderList from "../OrderList";
@@ -13,13 +14,21 @@ function UserProfile({ UserDataName, UserDataEmail, UserDataCart, UserDataAddres
     const [userId, setUserId] = useState(localStorage.getItem("userId"))
     const [token, setToken] = useState(localStorage.getItem("jwt"))
 
-    // if (UserDataCart === 0) {
-    //     return (
-    //         <div>
-    //             <p>You've made no orders</p>
-    //         </div>
-    //     );
-    // } 
+function DeleteUser() {
+
+        try {
+            const deleteResponse = axios.delete(`http://localhost:1337/users/${userId}`)
+            console.log("deleted user", deleteResponse)
+            console.log("clicked", userId)
+            localStorage.clear();
+            window.location.reload();
+        }
+
+        catch (error) {
+            console.log("failed to delete your profile", error.data)
+        }
+
+    }
   
 
     return (
@@ -64,7 +73,7 @@ function UserProfile({ UserDataName, UserDataEmail, UserDataCart, UserDataAddres
  
                    Orders made: {UserDataCart}  <br/>
 
-                    <button className="btn"> Delete profile </button>
+                    <button className="btn" onClick={DeleteUser}> Delete profile </button>
                     <button className="btn"> Update profile </button>
                    </div>
                 
@@ -82,10 +91,8 @@ function UserProfile({ UserDataName, UserDataEmail, UserDataCart, UserDataAddres
 
             </div> 
            
-           
-           
-           
            }
+
 
         </div>
        

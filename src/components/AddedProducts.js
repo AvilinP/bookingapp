@@ -11,7 +11,6 @@ function AddedProducts({ productName, productDescription, productPrice, productI
     function DeleteProduct() {
         try {
             const deleteResponse = axios.delete(`http://localhost:1337/products/${productId}`)
-            // uppdatera sidan så listan uppdateras?
             console.log("deleted product", deleteResponse)
             window.location.reload()
         }
