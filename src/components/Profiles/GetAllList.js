@@ -42,6 +42,7 @@ export default function GetAllList() {
                     {allUsers.map((getAll) => {
                         return (
                             <GetAllUsers
+                                key={getAll.id}
                                 getAllUserskey={getAll.id}
                                 getAllUsersName={getAll.username}
                                 getAllUsersEmail={getAll.email}

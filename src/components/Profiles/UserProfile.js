@@ -12,6 +12,14 @@ function UserProfile({ UserDataName, UserDataEmail, UserDataCart, UserDataAddres
     const getUsername = useState(localStorage.getItem("username"))
     const [userId, setUserId] = useState(localStorage.getItem("userId"))
     const [token, setToken] = useState(localStorage.getItem("jwt"))
+
+    // if (UserDataCart === 0) {
+    //     return (
+    //         <div>
+    //             <p>You've made no orders</p>
+    //         </div>
+    //     );
+    // } 
   
 
     return (
@@ -46,7 +54,7 @@ function UserProfile({ UserDataName, UserDataEmail, UserDataCart, UserDataAddres
            : 
            
            
-           <div> {getUsername}  is NOT an admin.  <br/><br/>
+           <div className="min-h-screen"> {getUsername}  is NOT an admin.  <br/><br/>
 
                    <div>
                    
@@ -61,10 +69,10 @@ function UserProfile({ UserDataName, UserDataEmail, UserDataCart, UserDataAddres
                    </div>
                 
                     <div className="mt-10">
+   
+                    {UserDataCart === 0 ?  <p> You've made no previous orders </p> : <p> Your previous orders. </p> }
 
-                    Your previous orders.
-
-                       <div className="p-12"> 
+                       <div> 
                             <OrderList>
                                 <MyOrders/>
                             </OrderList>
