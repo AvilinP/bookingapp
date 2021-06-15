@@ -46,7 +46,7 @@ export default function UserList() {
                         UserDataEmail={user.email}
                         UserDataCart={user.user_carts.length}
 
-                            />
+                        />
                         )
                     })}
 

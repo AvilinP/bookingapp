@@ -47,9 +47,11 @@ function AddedProducts({ productName, productDescription, productPrice, productI
                 </div>
 
                 <button className="btn" onClick={DeleteProduct}>Delete</button>
+
                 <Link to ="/updateProducts"> 
                 <button className="btn" onClick={SetProductId}>Update</button>
                 </Link>
+                
             </div>
 
             
