@@ -6,6 +6,7 @@ import OrderList from "../OrderList";
 import UserList from "./UserList";
 import GetAllList from "./GetAllList";
 import Modal from "react-modal";
+import ContactForm from "../contactUs/ContactForm";
 
 
 export default function UserProfile({ UserDataName, UserDataEmail, UserDataCart, UserDataAddress, getAllUserskey, getAllUsersName, getAllUsersEmail }) {
@@ -179,6 +180,8 @@ export default function UserProfile({ UserDataName, UserDataEmail, UserDataCart,
                             Your profile information: <br />
                             Username: {UserDataName} <br />
                             Email: {UserDataEmail}   <br />
+
+                            
 
                             Orders made: {UserDataCart}  <br />
 

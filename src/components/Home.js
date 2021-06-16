@@ -20,12 +20,14 @@ function Home() {
                         <div>
                             <p className="text-xs lg:text-sm pb-6"> SMALL-SCALE PRODUCTION AT A SUSTAINABLE PACE TO MINIMIZE WATER CONSUMPTION, ENVIRONMENTAL IMPACT AND WASTE. NURTURING AND PROMOTING A DYNAMIC RELATIONSHIP BETWEEN COSMETICS MANUFACTURING AND ORGANIC FARMING.WE SHARE EVERYTHING ON THIS PLANET. WE LIVE IN A WORLD THAT DEMANDS FAST SEASONAL CHANGE OF PRODUCTS AND MASS PRODUCTION THAT OFTEN EQUALS UNNECESSARY WASTE AND UNSUSTAINABLE PRODUCTION CYCLES. </p>
                             <p className="text-xs lg:text-sm lg:pb-10"> WE WANT TO CONTRIBUTE TO A SHIFT TO MORE SUSTAINABLE WAYS OF USING BEAUTY PRODUCTS BY CREATING TIMELESS AND MULTIFUNCTIONAL PRODUCTS THROUGH SUSTAINABLE DEVELOPMENT PROCESSES AND PRODUCTION CYCLES THAT EMPHASIZE ON MINIMIZING THE ENVIRONMENTAL FOOTPRINT. THE PRODUCTS ARE HIGHLY CONCENTRATED AND DESIGNED TO LAST FOR A WHILE. </p>
-
+                           
                         </div>
 
                     </div>
                     
                     <button className="btn"><Link to="/search">read more. </Link></button>
+
+                    <button className="btn"><Link to="/contact">contact us. </Link></button>
                    
                 </div>
 

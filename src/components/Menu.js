@@ -33,7 +33,6 @@ function Menu() {
                         {/* <Link to="/createProducts" className="menu-links absolute left-2">add.</Link> */}
 
                         <Link to="/profile" className="menu-links absolute left-16">account.</Link> 
-                        
 
                         <Link to="/arrivals" className="menu-links absolute left-40">new arrivals.</Link>
 

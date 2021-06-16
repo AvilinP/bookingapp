@@ -22,7 +22,8 @@
     "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.1.4",
     "unsplash-js": "6.0.0",
     "web-vitals": "^1.0.1",
-    "yarn": "^1.22.10"
+    "yarn": "^1.22.10",
+    "emailjs-com": "^3.1.0"
   },
   "scripts": {
     "start": "craco start",
@@ -42,5 +43,7 @@
       "last 1 safari version"
     ]
   },
-  "devDependencies": {}
+  "devDependencies": {
+    
+  }
 }

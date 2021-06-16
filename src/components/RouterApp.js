@@ -8,10 +8,9 @@ import SearchList from "./SearchList";
 import Registration from "./Registration";
 import CreateProducts from "./CreateProducts";
 import UpdateProducts from "./UpdateProducts";
-import MyOrders from "./MyOrders";
 import OrderList from "./OrderList";
-import UserProfile from "./profiles/UserProfile";
 import UserList from "./profiles/UserList";
+import ContactForm from "./contactUs/ContactForm";
 import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
 
 export default function RouterApp() {
@@ -32,6 +31,7 @@ export default function RouterApp() {
                         <Route path="/updateProducts" component={UpdateProducts} />
                         <Route path="/profile" component={UserList} />
                         <Route path="/order" component={OrderList} />
+                        <Route path="/contact" component={ContactForm} />
                     </Switch>
 
                 </Router>
