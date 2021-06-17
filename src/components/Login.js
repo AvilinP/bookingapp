@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useHistory } from "react-router-dom";
 import axios from "axios";
+import GoogleAuth from "./GoogleAuth"
 
 
 function Login() {
@@ -48,8 +49,8 @@ function Login() {
         localStorage.setItem("role", response.data.user.role.name)
         // setAuth(true)
         window.location.reload()
-       // history.push("/arrivals")
-        
+        // history.push("/arrivals")
+
       })
 
 
@@ -62,8 +63,10 @@ function Login() {
 
 
 
-  return (
-    <>
+
+
+    return (
+      <>
 
         <div className="min-h-screen flex justify-center py-20 px-4 sm:px-6 lg:px-8">
           <div className="max-w-md w-full space-y-8">
@@ -127,13 +130,14 @@ function Login() {
                 </button>
               </div>
             </form>
+            <button className="btn w-full"><Link to={{ pathname: "http://localhost:1337/connect/google" }} target="_blank">log in/register with google.</Link> </button>
           </div>
         </div>
 
-      
+        <GoogleAuth />
 
-    </>
-  )
-}
+      </>
+    )
+  }
 
-export default Login;
+  export default Login;
