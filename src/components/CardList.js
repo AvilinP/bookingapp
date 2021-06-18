@@ -48,7 +48,8 @@ export default function CardList() {
                             productName={product.name} // productName is value used with props in Card.js
                             productDescription={product.description} 
                             productPrice={product.price}
-                            productImage={product.img} />
+                            productImage={product.img} 
+                        />
                     )
                 })}
 

@@ -1,18 +1,17 @@
 import React, { useState, useEffect } from "react";
-import { useHistory, Redirect, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import axios from "axios";
 import MyOrders from "../MyOrders";
 import OrderList from "../OrderList";
-import UserList from "./UserList";
 import GetAllList from "./GetAllList";
 import Modal from "react-modal";
-import ContactForm from "../contactUs/ContactForm";
 
 
-export default function UserProfile({ UserDataName, UserDataEmail, UserDataCart, UserDataAddress, getAllUserskey, getAllUsersName, getAllUsersEmail }) {
 
-    const getAdmin = localStorage.getItem("role")
-    const getUsername = useState(localStorage.getItem("username"))
+function UserProfile({ UserDataName, UserDataEmail, UserDataCart}) {
+
+    const [getAdmin] = useState(localStorage.getItem("role"))
+    const [getUsername] = useState(localStorage.getItem("username"))
     const [userId, setUserId] = useState(localStorage.getItem("userId"))
     const [token, setToken] = useState(localStorage.getItem("jwt"))
 
@@ -66,23 +65,15 @@ export default function UserProfile({ UserDataName, UserDataEmail, UserDataCart,
         setIsOpen(false)
     }
 
-    function onHandleChange(e) {
-        setModalFormValues({ ...modalFormValues, [e.target.name]: e.target.value })
-    }
-
-
-    // const [formValues, setFormValues] = useState(formInitialValues)
-    // const [fileData, setFileData] = useState(null)
-    // const updateProductId = Number(localStorage.getItem("updateProductId"))
 
     useEffect(() => {
         axios.get(`http://localhost:1337/users/${userId}`
-        ,
-        {
-            headers: {
-                Authorization: `Bearer ${token}`,
-            }
-        })
+            ,
+            {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                }
+            })
             .then(res => {
                 setModalFormValues({
                     username: res.data.username,
@@ -101,10 +92,6 @@ export default function UserProfile({ UserDataName, UserDataEmail, UserDataCart,
         console.log(modalFormValues.username, modalFormValues.email)
     }
 
-    // function handleOnChangeImg(e) {
-    //     setFileData(e.target.files[0])
-    // }
-
     function handleOnSubmit(e) {
         e.preventDefault();
 
@@ -118,17 +105,6 @@ export default function UserProfile({ UserDataName, UserDataEmail, UserDataCart,
             }
         ).then((response) => {
             console.log(response.data)
-
-            // img file upload
-            // const data = new FormData();
-            // data.append("files", fileData)
-            // data.append("ref", "product") // append to collection
-            // data.append("refId", productId) // append to above product id  
-            // data.append("field", "img") // append to field in collection
-            // axios.post("http://localhost:1337/upload", data)
-            //     .then((image) => console.log(image))
-            //     .catch((err) => console.log(err))
-
 
         }).then(() => {
             setModalFormValues(modalInitialValues)
@@ -181,7 +157,7 @@ export default function UserProfile({ UserDataName, UserDataEmail, UserDataCart,
                             Username: {UserDataName} <br />
                             Email: {UserDataEmail}   <br />
 
-                            
+
 
                             Orders made: {UserDataCart}  <br />
 
@@ -250,3 +226,4 @@ export default function UserProfile({ UserDataName, UserDataEmail, UserDataCart,
     )
 }
 
+export default UserProfile;
