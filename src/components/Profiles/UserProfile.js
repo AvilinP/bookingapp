@@ -112,6 +112,10 @@ function UserProfile({ UserDataName, UserDataEmail, UserDataCart}) {
 
     }
 
+    function Reload() {
+        window.location.reload()
+    }
+
 
     return (
         <>
@@ -208,7 +212,8 @@ function UserProfile({ UserDataName, UserDataEmail, UserDataCart}) {
 
                                 <button
                                     className="btn"
-                                    type="submit">
+                                    type="submit"
+                                    onClick={Reload}>
                                     confirm change.
                                 </button>
 
