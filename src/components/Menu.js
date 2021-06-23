@@ -29,8 +29,6 @@ function Menu() {
                 {jwt ?
 
                     <>
-                        {/* Make inline cond. for roles */}
-                        {/* <Link to="/createProducts" className="menu-links absolute left-2">add.</Link> */}
 
                         <Link to="/profile" className="menu-links absolute left-16">account.</Link> 
 

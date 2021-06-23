@@ -5,7 +5,7 @@ const stripePromise = loadStripe('pk_test_51Ix6OEDxXBHCoNT5jrWDD1Fjdd8qWVWSKb7FV
 
 
 
-export default function MyOrders({ cart, CustomerName, CustomerAddress, CustomerMobile, CustomerUsername, CustomerEmail, orderProductsName, orderProductImage, orderProductDesc, orderProductPrice }) {
+export default function MyOrders({ CustomerAddress, CustomerMobile, orderProductsName, orderProductImage, orderProductDesc, orderProductPrice }) {
 
     const handleClick = async (event) => {
         // Get Stripe.js instance
@@ -41,14 +41,6 @@ export default function MyOrders({ cart, CustomerName, CustomerAddress, Customer
 
             <div className="bg-white border-black p-6 m-4">
 
-                {/* <div className="text-2xl font-bold mb-2 ml-3 justify-center">
-                    congrats.  {CustomerName}
-
-                </div>
-
-                <div className="text-gray-800 leading-relaxed mb-6 ml-3">
-                    Your order(s) is confirmed.
-                </div> */}
 
                 <img className="p-1 object-cover" src={`http://localhost:1337${orderProductImage.formats.small.url}`} alt="Products possible to buy" />
 

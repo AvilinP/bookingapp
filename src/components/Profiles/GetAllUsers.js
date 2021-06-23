@@ -5,7 +5,6 @@ import Modal from "react-modal";
 
 export default function GetAllUsers({getAllUserskey, getAllUsersName, getAllUsersEmail, getAllUsersRole}) {
 
-    // const [userId, setUserId] = useState(localStorage.getItem("userId"))
     const [token, setToken] = useState(localStorage.getItem("jwt"))
 
     function DeleteUserId() {

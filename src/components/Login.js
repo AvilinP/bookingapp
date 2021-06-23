@@ -13,7 +13,6 @@ function Login() {
 
   const [formValues, setFormValues] = useState(initialValues)
   const [error, setError] = useState("")
-  // const [auth, setAuth] = useState("")
   const [username, setUsername] = useState("")
   const [jwt, setJwt] = useState("")
   const history = useHistory();
@@ -47,9 +46,7 @@ function Login() {
         localStorage.setItem("userId", response.data.user.id)
         localStorage.setItem("username", response.data.user.username)
         localStorage.setItem("role", response.data.user.role.name)
-        // setAuth(true)
         window.location.reload()
-        // history.push("/arrivals")
 
       })
 

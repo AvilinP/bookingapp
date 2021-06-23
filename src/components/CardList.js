@@ -45,7 +45,7 @@ export default function CardList() {
                             product={product} 
                             key={product.id}
                             productId={product.id}
-                            productName={product.name} // productName is value used with props in Card.js
+                            productName={product.name} 
                             productDescription={product.description} 
                             productPrice={product.price}
                             productImage={product.img} 

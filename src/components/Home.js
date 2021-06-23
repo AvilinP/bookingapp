@@ -9,9 +9,7 @@ function Home() {
             <div className="mx-1 pb-10 gap-1 grid grid-cols-1 xl:grid-cols-3 xl:h-auto">
 
                 <div className="border-home">
-                    {/* <div className="flex justify-center p-2"> bag. </div> */}
                     <img src="/assets/shoe.png" alt="Home page product 1" />
-                    {/* <button className="border-2 border-black m-2 p-2">See more</button> */}
                 </div>
 
                 <div className="border-home">
@@ -32,9 +30,7 @@ function Home() {
                 </div>
 
                 <div className="border-home">
-                    {/* <div className="flex justify-center p-2"> pineapple.</div> */}
                     <img src="/assets/bag.png" alt="Home page product 1" />
-                    {/* <button className="border-2 border-black m-2 p-2">See more</button> */}
                 </div>
 
                 <div className="border-home">
