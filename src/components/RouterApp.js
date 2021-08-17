@@ -8,7 +8,7 @@ import SearchList from "./SearchList";
 import Registration from "./Registration";
 import CreateProducts from "./CreateProducts";
 import UpdateProducts from "./UpdateProducts";
-import UserList from "./profiles/UserList";
+import UserList from "./Profiles/UserList";
 import OrderList from "./OrderList";
 import ContactForm from "./contactUs/ContactForm";
 import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
